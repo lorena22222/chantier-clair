@@ -16,6 +16,7 @@
 </head>
 <body>
 
+<header class="site-header">
 <div class="wrap">
   <nav>
     <div class="logo brand-face">
@@ -30,13 +31,14 @@
     <a href="#" class="nav-cta">Trouver un artisan</a>
   </nav>
 </div>
+</header>
 
 <div class="wrap">
   <section class="hero">
     <div>
       <div class="hero-eyebrow">Plomberie &amp; électricité — Paris &amp; proche banlieue</div>
-      <h1>LE CHANTIER COMMENCÉ.<br>L'ARGENT BLOQUÉ.<br><span class="accent">JAMAIS L'INVERSE.</span></h1>
-      <p class="lede">Chantier Clair garde le paiement en sécurité jusqu'à ce que le travail soit vraiment fini. Il ne met en avant que des artisans vérifiés, SIRET et assurance décennale à l'appui.</p>
+      <h1>DES ARTISANS DE CONFIANCE.<br><span class="accent">UN PAIEMENT TOUJOURS SÉCURISÉ.</span></h1>
+      <p class="lede">Chantier Clair ne met en avant que des artisans vérifiés, SIRET et assurance décennale à l'appui. Le paiement reste en sécurité jusqu'à ce que le travail soit vraiment fini.</p>
       <div class="hero-actions">
         <a href="#" class="btn-primary">Trouver un artisan vérifié</a>
         <a href="#" class="btn-secondary">Voir comment ça marche</a>
@@ -70,6 +72,16 @@
 
   <section class="illu">
     <svg width="900" height="500" viewBox="0 0 900 640" style="max-width:640px; width:100%;">
+      <defs>
+        <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#EFCBA3"/>
+          <stop offset="100%" stop-color="#DCA877"/>
+        </linearGradient>
+        <linearGradient id="inkGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1C2C55"/>
+          <stop offset="100%" stop-color="#101A34"/>
+        </linearGradient>
+      </defs>
       <rect width="900" height="640" fill="#F4F0E6"/>
       <line x1="0" y1="520" x2="900" y2="520" stroke="#D3C9AD" stroke-width="2"/>
       <g transform="translate(430,150)">
@@ -97,17 +109,21 @@
       </g>
       <g transform="translate(150,300)">
         <ellipse cx="60" cy="222" rx="70" ry="10" fill="#D3C9AD" opacity="0.6"/>
-        <rect x="30" y="150" width="22" height="70" rx="8" fill="#14203D"/>
-        <rect x="68" y="150" width="22" height="70" rx="8" fill="#14203D"/>
-        <rect x="24" y="212" width="34" height="14" rx="5" fill="#C68A2E"/>
-        <rect x="62" y="212" width="34" height="14" rx="5" fill="#C68A2E"/>
-        <rect x="18" y="70" width="84" height="90" rx="14" fill="#14203D"/>
-        <rect x="42" y="55" width="36" height="30" rx="6" fill="#14203D"/>
-        <rect x="0" y="80" width="20" height="65" rx="10" fill="#14203D"/>
-        <rect x="100" y="80" width="20" height="65" rx="10" fill="#E3B98C" transform="rotate(-25 100 80)"/>
-        <circle cx="60" cy="35" r="30" fill="#E3B98C"/>
-        <path d="M 25 25 A 35 30 0 0 1 95 25 L 95 30 L 25 30 Z" fill="#C68A2E"/>
+        <rect x="30" y="150" width="22" height="70" rx="10" fill="url(#inkGrad)"/>
+        <rect x="68" y="150" width="22" height="70" rx="10" fill="url(#inkGrad)"/>
+        <rect x="24" y="212" width="34" height="14" rx="6" fill="#C68A2E"/>
+        <rect x="62" y="212" width="34" height="14" rx="6" fill="#C68A2E"/>
+        <rect x="18" y="70" width="84" height="90" rx="18" fill="url(#inkGrad)"/>
+        <rect x="42" y="55" width="36" height="30" rx="8" fill="url(#inkGrad)"/>
+        <rect x="0" y="80" width="20" height="65" rx="10" fill="url(#inkGrad)"/>
+        <rect x="100" y="80" width="20" height="65" rx="10" fill="url(#skinGrad)" transform="rotate(-25 100 80)"/>
+        <circle cx="60" cy="35" r="30" fill="url(#skinGrad)"/>
+        <circle cx="48" cy="33" r="2.6" fill="#14203D"/>
+        <circle cx="72" cy="33" r="2.6" fill="#14203D"/>
+        <path d="M 47 44 Q 60 51 73 44" fill="none" stroke="#14203D" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M 25 25 A 35 30 0 0 1 95 25 L 95 30 L 25 30 Z" fill="#A66F1F"/>
         <rect x="20" y="26" width="80" height="9" rx="4" fill="#C68A2E"/>
+        <rect x="26" y="27" width="50" height="3" rx="1.5" fill="#E3B98C" opacity="0.55"/>
         <g transform="translate(118,32) rotate(-20)">
           <rect x="0" y="0" width="10" height="46" rx="3" fill="#8A8272"/>
           <rect x="-6" y="-14" width="22" height="16" rx="3" fill="#14203D"/>
@@ -153,6 +169,7 @@
           <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Décennale à jour</span>
         </div>
         <div class="profile-stats"><span><strong data-count="47">0</strong> chantiers validés</span><span>Répond en &lt; 2h</span></div>
+        <button type="button" class="btn-chat-preview" data-artisan-name="Karim B." data-artisan-photo="https://randomuser.me/api/portraits/men/32.jpg" data-artisan-slot="Ven. 12 sept., 14h00">Réserver un créneau</button>
       </div>
 
       <div class="profile-card">
@@ -171,6 +188,7 @@
           <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Décennale à jour</span>
         </div>
         <div class="profile-stats"><span><strong data-count="28">0</strong> chantiers validés</span><span>Répond en &lt; 1h</span></div>
+        <button type="button" class="btn-chat-preview" data-artisan-name="Nadia F." data-artisan-photo="https://randomuser.me/api/portraits/women/44.jpg" data-artisan-slot="Lun. 15 sept., 9h30">Réserver un créneau</button>
       </div>
 
       <div class="profile-card">
@@ -189,6 +207,7 @@
           <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>1er chantier suivi</span>
         </div>
         <div class="profile-stats"><span><strong data-count="6">0</strong> chantiers validés</span><span>Répond en &lt; 3h</span></div>
+        <button type="button" class="btn-chat-preview" data-artisan-name="Julien T." data-artisan-photo="https://randomuser.me/api/portraits/men/68.jpg" data-artisan-slot="Mer. 17 sept., 11h00">Réserver un créneau</button>
       </div>
 
     </div>
@@ -215,7 +234,7 @@
   <div class="wrap">
     <div class="section-head"><div class="mono-label">Comment ça marche</div><h2>TROIS ÉTAPES, DANS CET ORDRE, À CHAQUE FOIS.</h2></div>
     <div class="steps">
-      <div class="step"><div class="step-num">01</div><h3>Devis &amp; vérification</h3><p>Vous recevez un devis clair d'un artisan vérifié — SIRET, Kbis et assurance décennale déjà contrôlés.</p></div>
+      <div class="step"><div class="step-num">01</div><h3>Devis &amp; vérification</h3><p>Vous recevez un devis clair d'un artisan vérifié. SIRET, Kbis et assurance décennale sont déjà contrôlés.</p></div>
       <div class="step"><div class="step-num">02</div><h3>Paiement séquestré</h3><p>Votre acompte est bloqué, pas versé directement à l'artisan. Personne n'est payé pour un travail non fait.</p></div>
       <div class="step"><div class="step-num">03</div><h3>Vous validez, l'argent se libère</h3><p>Le chantier terminé et confirmé par vous, le paiement part à l'artisan.</p></div>
     </div>
@@ -226,7 +245,7 @@
   <div class="wrap">
     <div>
       <div class="seal"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <p style="font-family:'Source Serif 4',serif; color:var(--ink-soft); font-size:15px; max-width:280px;">Un badge qui veut dire quelque chose — pas une étoile qu'on distribue à tout le monde.</p>
+      <p style="font-family:'Source Serif 4',serif; color:var(--ink-soft); font-size:15px; max-width:280px;"><strong style="color:var(--ink); font-weight:600;">Un badge qui veut dire quelque chose.</strong> Pas une étoile qu'on distribue à tout le monde.</p>
     </div>
     <div class="criteria-list">
       <div class="criterion"><span class="c-mark">01</span><div><h3>SIRET &amp; Kbis contrôlés</h3><p>L'entreprise existe, elle est déclarée, elle est en règle.</p></div></div>
@@ -267,8 +286,8 @@
         </div>
         <div class="zone-list-label">COMMUNES COUVERTES</div>
         <div class="chips">
-          <div class="chip">Paris</div><div class="chip">Vincennes</div><div class="chip">Montreuil</div>
-          <div class="chip">Saint-Mandé</div><div class="chip">Charenton</div><div class="chip muted">+ à venir</div>
+          <div class="chip">Paris</div><div class="chip">Vincennes</div><div class="chip">Saint-Mandé</div>
+          <div class="chip">Courbevoie</div><div class="chip">Levallois</div><div class="chip muted">+ à venir</div>
         </div>
       </div>
     </div>
@@ -286,6 +305,31 @@
 </section>
 
 <footer>Chantier Clair — Paris &amp; proche banlieue · Plomberie &amp; électricité · Paiement toujours séquestré</footer>
+
+<div class="chat-overlay" id="chatOverlay" aria-hidden="true">
+  <div class="chat-backdrop" data-chat-close></div>
+  <div class="chat-modal" role="dialog" aria-modal="true" aria-labelledby="chatModalName">
+    <div class="chat-modal-head">
+      <div class="chat-modal-artisan">
+        <img class="chat-modal-avatar" src="" alt="">
+        <div>
+          <div class="chat-modal-name" id="chatModalName"></div>
+          <div class="chat-modal-status"><span class="t-live"></span><span class="chat-modal-slot">Créneau confirmé</span></div>
+        </div>
+      </div>
+      <button class="chat-modal-close" type="button" data-chat-close aria-label="Fermer l'aperçu">✕</button>
+    </div>
+    <div class="chat-modal-body">
+      <div class="chat-bubble chat-bubble-them">Bonjour&nbsp;! Je confirme bien le créneau pour l'intervention. À bientôt.</div>
+      <div class="chat-bubble chat-bubble-me">Parfait, merci beaucoup !</div>
+      <div class="chat-bubble chat-bubble-them">Avec plaisir. N'hésitez pas à m'écrire si vous avez une question avant mon passage 👍</div>
+    </div>
+    <div class="chat-modal-foot">
+      <input type="text" placeholder="Écrire un message…" disabled>
+      <span class="chat-modal-note">Aperçu — actif une fois votre créneau confirmé</span>
+    </div>
+  </div>
+</div>
 
 <script>
   if ('IntersectionObserver' in window) {
@@ -338,6 +382,65 @@
         card.style.transform = 'perspective(700px) rotateX(' + (y * -6) + 'deg) rotateY(' + (x * 6) + 'deg) translateY(-4px)';
       });
       card.addEventListener('mouseleave', function () { card.style.transform = ''; });
+    });
+  }
+
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var onHeaderScroll = function () {
+      header.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    onHeaderScroll();
+    window.addEventListener('scroll', onHeaderScroll, { passive: true });
+  }
+
+  function attachRipple(selector, color) {
+    document.querySelectorAll(selector).forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        var rect = btn.getBoundingClientRect();
+        var size = Math.max(rect.width, rect.height) * 1.8;
+        var span = document.createElement('span');
+        span.className = 'ripple';
+        span.style.width = span.style.height = size + 'px';
+        span.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        span.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        span.style.background = color;
+        btn.appendChild(span);
+        span.addEventListener('animationend', function () { span.remove(); });
+      });
+    });
+  }
+  attachRipple('.btn-primary, .nav-cta, .btn-chat-preview', 'rgba(255,255,255,0.45)');
+  attachRipple('.btn-light', 'rgba(20,32,61,0.15)');
+  attachRipple('.btn-outline', 'rgba(198,138,46,0.4)');
+
+  var chatOverlay = document.getElementById('chatOverlay');
+  if (chatOverlay) {
+    var chatName = chatOverlay.querySelector('.chat-modal-name');
+    var chatAvatar = chatOverlay.querySelector('.chat-modal-avatar');
+    var chatSlot = chatOverlay.querySelector('.chat-modal-slot');
+    var openChat = function (btn) {
+      chatName.textContent = btn.getAttribute('data-artisan-name');
+      chatAvatar.src = btn.getAttribute('data-artisan-photo');
+      chatAvatar.alt = btn.getAttribute('data-artisan-name');
+      chatSlot.textContent = 'Créneau confirmé — ' + btn.getAttribute('data-artisan-slot');
+      chatOverlay.classList.add('open');
+      chatOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+    var closeChat = function () {
+      chatOverlay.classList.remove('open');
+      chatOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+    document.querySelectorAll('.btn-chat-preview').forEach(function (btn) {
+      btn.addEventListener('click', function () { openChat(btn); });
+    });
+    chatOverlay.querySelectorAll('[data-chat-close]').forEach(function (el) {
+      el.addEventListener('click', closeChat);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && chatOverlay.classList.contains('open')) closeChat();
     });
   }
 </script>
