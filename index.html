@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
 
@@ -255,30 +256,8 @@
     <p class="sub">On démarre volontairement resserré : deux métiers, une zone qu'on connaît bien, le temps de bien faire les choses. La France viendra ensuite, ville par ville.</p>
     <div class="zone-grid">
       <div class="zone-map">
-        <svg viewBox="0 0 600 600" width="100%">
-          <rect width="600" height="600" fill="#FBF9F4"/>
-          <circle cx="300" cy="300" r="225" fill="none" stroke="#D3C9AD" stroke-width="2" stroke-dasharray="5 5"/>
-
-          <g transform="translate(300,300)">
-            <circle class="spin-slow" cx="0" cy="0" r="72" fill="none" stroke="#C68A2E" stroke-width="1.5" stroke-dasharray="3 4"/>
-            <circle cx="0" cy="0" r="17" fill="#14203D"/>
-            <circle cx="0" cy="0" r="17" fill="none" stroke="#C68A2E" stroke-width="2.5"/>
-          </g>
-          <text x="300" y="345" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="700" font-size="16" fill="#14203D">PARIS</text>
-
-          <g font-family="Space Grotesk" font-size="13" fill="#465067">
-            <circle cx="300" cy="110" r="6" fill="#C68A2E"/><text x="300" y="132" text-anchor="middle">Clichy</text>
-            <circle cx="430" cy="155" r="6" fill="#C68A2E"/><text x="442" y="159">Pantin</text>
-            <circle cx="460" cy="300" r="6" fill="#C68A2E"/><text x="472" y="304">Vincennes</text>
-            <circle cx="445" cy="250" r="6" fill="#C68A2E"/><text x="457" y="242">Saint-Mandé</text>
-            <circle cx="230" cy="460" r="6" fill="#C68A2E"/><text x="230" y="482" text-anchor="middle">Boulogne-B.</text>
-            <circle cx="140" cy="280" r="6" fill="#C68A2E"/><text x="128" y="284" text-anchor="end">Courbevoie</text>
-            <circle cx="155" cy="210" r="6" fill="#C68A2E"/><text x="143" y="214" text-anchor="end">Neuilly-s-Seine</text>
-            <circle cx="170" cy="170" r="6" fill="#C68A2E"/><text x="158" y="166" text-anchor="end">Levallois</text>
-          </g>
-
-          <text x="300" y="560" text-anchor="middle" font-family="Space Grotesk" font-size="11.5" fill="#8A8272">+ le reste de la France, ville par ville, ensuite</text>
-        </svg>
+        <div id="zoneMap" role="img" aria-label="Carte de la zone couverte par Chantier Clair autour de Paris"></div>
+        <p class="zone-map-hint">Cliquez sur la carte pour zoomer/déplacer · cliquez un point pour le détail</p>
       </div>
       <div>
         <div class="zone-list-label">MÉTIERS AU LANCEMENT</div>
@@ -397,6 +376,7 @@
   </div>
 </div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
   if ('IntersectionObserver' in window) {
     var revealObserver = new IntersectionObserver(function (entries) {
@@ -557,6 +537,47 @@
         geoBtn.disabled = false;
         geoStatus.textContent = 'Localisation refusée ou indisponible — impossible de trier par proximité.';
       }, { enableHighAccuracy: false, timeout: 8000 });
+    });
+  }
+
+  var mapEl = document.getElementById('zoneMap');
+  if (mapEl && window.L) {
+    var communes = [
+      { name: 'Paris', lat: 48.8566, lon: 2.3522, hub: true, dir: 'top' },
+      { name: 'Vincennes', lat: 48.8467, lon: 2.4370, dir: 'right' },
+      { name: 'Saint-Mandé', lat: 48.8422, lon: 2.4160, dir: 'right' },
+      { name: 'Courbevoie', lat: 48.8970, lon: 2.2530, dir: 'left' },
+      { name: 'Levallois-Perret', lat: 48.8938, lon: 2.2875, dir: 'left' },
+      { name: 'Neuilly-sur-Seine', lat: 48.8846, lon: 2.2686, dir: 'left' },
+      { name: 'Boulogne-Billancourt', lat: 48.8352, lon: 2.2400, dir: 'left' },
+      { name: 'Clichy', lat: 48.9042, lon: 2.3059, dir: 'top' },
+      { name: 'Pantin', lat: 48.8964, lon: 2.4014, dir: 'right' }
+    ];
+
+    var zoneMap = L.map(mapEl, {
+      scrollWheelZoom: false,
+      zoomControl: true
+    });
+    zoneMap.fitBounds(communes.map(function (c) { return [c.lat, c.lon]; }), { padding: [34, 34] });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+      maxZoom: 19
+    }).addTo(zoneMap);
+
+    mapEl.addEventListener('click', function () { zoneMap.scrollWheelZoom.enable(); });
+    mapEl.addEventListener('mouseleave', function () { zoneMap.scrollWheelZoom.disable(); });
+
+    communes.forEach(function (c) {
+      var marker = L.circleMarker([c.lat, c.lon], {
+        radius: c.hub ? 10 : 7,
+        color: c.hub ? '#14203D' : '#A66F1F',
+        weight: 2,
+        fillColor: c.hub ? '#14203D' : '#C68A2E',
+        fillOpacity: 1
+      }).addTo(zoneMap);
+      marker.bindTooltip(c.name, { permanent: true, direction: c.dir, offset: [0, 0], className: c.hub ? 'zone-map-label zone-map-label-hub' : 'zone-map-label', opacity: 1 });
+      marker.bindPopup('<strong>' + c.name + '</strong><br>' + (c.hub ? 'Zone de référence' : 'Commune couverte'));
     });
   }
 

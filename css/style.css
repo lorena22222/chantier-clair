@@ -212,8 +212,17 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .zone h2 { font-size: 28px; margin-bottom: 14px; }
 .zone p.sub { font-family: 'Source Serif 4', serif; color: var(--ink-soft); font-size: 16px; margin-bottom: 44px; max-width: 520px; margin-left: auto; margin-right: auto; }
 .zone-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; text-align: left; }
-.zone-map { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 20px; }
-.zone-map svg { display: block; aspect-ratio: 1 / 1; width: 100%; height: auto; }
+.zone-map { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 0; overflow: hidden; box-shadow: 0 24px 48px -30px rgba(20,32,61,0.35); }
+#zoneMap { width: 100%; aspect-ratio: 1 / 1; background: #FBF9F4; font-family: 'Space Grotesk', sans-serif; }
+#zoneMap .leaflet-tile-pane { filter: grayscale(0.45) sepia(0.12) saturate(0.85) brightness(1.03); }
+.zone-map-hint { font-family: 'Space Grotesk', sans-serif; font-size: 11.5px; color: var(--ink-soft); text-align: center; padding: 10px 12px; border-top: 1px solid var(--line); }
+.leaflet-tooltip.zone-map-label { background: var(--white); border: 1px solid var(--line); border-radius: 20px; box-shadow: none; padding: 3px 10px; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; color: var(--ink-soft); }
+.leaflet-tooltip.zone-map-label::before { display: none; }
+.leaflet-tooltip.zone-map-label-hub { background: var(--ink); color: var(--paper); font-weight: 700; border-color: var(--ink); }
+.leaflet-popup-content-wrapper { border-radius: 10px; font-family: 'Source Serif 4', serif; }
+.leaflet-popup-content { font-size: 13.5px; color: var(--ink-soft); margin: 10px 14px; }
+.leaflet-popup-content strong { color: var(--ink); font-family: 'Bricolage Grotesque', sans-serif; }
+.leaflet-control-attribution { font-family: 'Space Grotesk', sans-serif; font-size: 10px; }
 .zone-list-label { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--gold-deep); font-weight: 600; margin-bottom: 16px; }
 .chips { display: flex; flex-wrap: wrap; gap: 12px; }
 .chip { border: 1.5px solid var(--ink); padding: 11px 22px; border-radius: 30px; font-family: 'Space Grotesk', sans-serif; font-size: 14.5px; font-weight: 500; transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }

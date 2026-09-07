@@ -16,9 +16,10 @@ chantier-clair/
 └── README.md
 ```
 
-Aucune dépendance, aucun build : c'est du HTML/CSS statique pur (les polices
-Bricolage Grotesque, Space Grotesk et Source Serif 4 sont chargées depuis
-Google Fonts).
+Aucun build : c'est du HTML/CSS/JS statique. Chargés depuis des CDN publics :
+les polices Bricolage Grotesque, Space Grotesk et Source Serif 4 (Google
+Fonts), et [Leaflet](https://leafletjs.com/) + les tuiles OpenStreetMap pour
+la carte interactive de la zone couverte (aucune clé API requise).
 
 ## Aperçu en local
 
