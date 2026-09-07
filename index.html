@@ -36,7 +36,11 @@
 <div class="wrap">
   <section class="hero">
     <div>
-      <div class="hero-eyebrow">Plomberie &amp; électricité — Paris &amp; proche banlieue</div>
+      <div class="hero-eyebrow">
+        <svg class="trade-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2 2.3-2.3z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="trade-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        Plomberie &amp; électricité · Paris &amp; proche banlieue
+      </div>
       <h1>VÉRIFIÉ AVANT.<br><span class="accent">PAYÉ SEULEMENT APRÈS.</span></h1>
       <p class="lede">Chantier Clair ne met en avant que des artisans vérifiés, SIRET et assurance décennale à l'appui. Le paiement reste en sécurité jusqu'à ce que le travail soit vraiment fini.</p>
       <div class="hero-actions">
@@ -223,9 +227,9 @@
 
 <section class="trust reveal">
   <div class="wrap">
-    <div>
-      <div class="seal"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <p style="font-family:'Source Serif 4',serif; color:var(--ink-soft); font-size:15px; max-width:280px;"><strong style="color:var(--ink); font-weight:600;">Un badge qui veut dire quelque chose.</strong> Pas une étoile qu'on distribue à tout le monde.</p>
+    <div class="trust-badge">
+      <div class="seal" tabindex="0"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <p class="trust-badge-text"><strong>Un badge qui veut dire quelque chose.</strong>Pas une étoile qu'on distribue à tout le monde.</p>
     </div>
     <div class="criteria-list">
       <div class="criterion"><span class="c-mark">01</span><div><h3>SIRET &amp; Kbis contrôlés</h3><p>L'entreprise existe, elle est déclarée, elle est en règle.</p></div></div>
@@ -242,20 +246,29 @@
     <p class="sub">On démarre volontairement resserré : deux métiers, une zone qu'on connaît bien, le temps de bien faire les choses. La France viendra ensuite, ville par ville.</p>
     <div class="zone-grid">
       <div class="zone-map">
-        <svg viewBox="0 0 900 560" width="100%">
-          <rect width="900" height="560" fill="#FBF9F4"/>
-          <path d="M 420 60 L 560 100 L 610 210 L 590 350 L 630 450 L 540 530 L 420 550 L 330 500 L 280 410 L 250 290 L 300 160 L 380 90 Z" fill="none" stroke="#D3C9AD" stroke-width="2" stroke-dasharray="5 5"/>
-          <circle cx="590" cy="440" r="7" fill="#D3C9AD"/><text x="605" y="445" font-family="Space Grotesk" font-size="12" fill="#8A8272">Lyon</text>
-          <circle cx="470" cy="500" r="7" fill="#D3C9AD"/><text x="485" y="505" font-family="Space Grotesk" font-size="12" fill="#8A8272">Marseille</text>
-          <circle cx="300" cy="240" r="7" fill="#D3C9AD"/><text x="230" y="230" font-family="Space Grotesk" font-size="12" fill="#8A8272">Nantes</text>
-          <circle cx="330" cy="430" r="7" fill="#D3C9AD"/><text x="230" y="440" font-family="Space Grotesk" font-size="12" fill="#8A8272">Bordeaux</text>
-          <g transform="translate(400,230)">
-            <circle cx="0" cy="0" r="46" fill="none" stroke="#C68A2E" stroke-width="1.5" stroke-dasharray="3 4"/>
-            <circle cx="0" cy="0" r="14" fill="#14203D"/>
-            <circle cx="0" cy="0" r="14" fill="none" stroke="#C68A2E" stroke-width="2.5"/>
+        <svg viewBox="0 0 600 600" width="100%">
+          <rect width="600" height="600" fill="#FBF9F4"/>
+          <circle cx="300" cy="300" r="225" fill="none" stroke="#D3C9AD" stroke-width="2" stroke-dasharray="5 5"/>
+
+          <g transform="translate(300,300)">
+            <circle class="spin-slow" cx="0" cy="0" r="72" fill="none" stroke="#C68A2E" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <circle cx="0" cy="0" r="17" fill="#14203D"/>
+            <circle cx="0" cy="0" r="17" fill="none" stroke="#C68A2E" stroke-width="2.5"/>
           </g>
-          <text x="460" y="222" font-family="Bricolage Grotesque" font-weight="700" font-size="15" fill="#14203D">PARIS</text>
-          <text x="460" y="242" font-family="Space Grotesk" font-size="12" fill="#8A8272">+ proche banlieue</text>
+          <text x="300" y="345" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="700" font-size="16" fill="#14203D">PARIS</text>
+
+          <g font-family="Space Grotesk" font-size="13" fill="#465067">
+            <circle cx="300" cy="110" r="6" fill="#C68A2E"/><text x="300" y="132" text-anchor="middle">Clichy</text>
+            <circle cx="430" cy="155" r="6" fill="#C68A2E"/><text x="442" y="159">Pantin</text>
+            <circle cx="460" cy="300" r="6" fill="#C68A2E"/><text x="472" y="304">Vincennes</text>
+            <circle cx="445" cy="250" r="6" fill="#C68A2E"/><text x="457" y="242">Saint-Mandé</text>
+            <circle cx="230" cy="460" r="6" fill="#C68A2E"/><text x="230" y="482" text-anchor="middle">Boulogne-B.</text>
+            <circle cx="140" cy="280" r="6" fill="#C68A2E"/><text x="128" y="284" text-anchor="end">Courbevoie</text>
+            <circle cx="155" cy="210" r="6" fill="#C68A2E"/><text x="143" y="214" text-anchor="end">Neuilly-s-Seine</text>
+            <circle cx="170" cy="170" r="6" fill="#C68A2E"/><text x="158" y="166" text-anchor="end">Levallois</text>
+          </g>
+
+          <text x="300" y="560" text-anchor="middle" font-family="Space Grotesk" font-size="11.5" fill="#8A8272">+ le reste de la France, ville par ville, ensuite</text>
         </svg>
       </div>
       <div>
