@@ -1,0 +1,9 @@
+{
+  "name": "chantier-clair",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site vitrine Chantier Clair — plomberie & électricité, Paris & proche banlieue",
+  "scripts": {
+    "dev": "npx serve . -l 3000"
+  }
+}
