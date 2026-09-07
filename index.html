@@ -121,9 +121,13 @@
       <div class="mono-label" style="color:var(--gold-deep); font-size:13px; font-weight:600; margin-bottom:14px;">Des profils, pas des inconnus</div>
       <h2>DES EXPERTS QU'ON PEUT VRAIMENT ÉVALUER.</h2>
     </div>
-    <div class="profile-grid">
+    <div class="geo-locate">
+      <button type="button" id="geoBtn" class="btn-geo"><span aria-hidden="true">📍</span> Trouver les artisans les plus proches de moi</button>
+      <p class="geo-status" id="geoStatus" aria-live="polite"></p>
+    </div>
+    <div class="profile-grid" id="profileGrid">
 
-      <div class="profile-card">
+      <div class="profile-card" data-lat="48.8467" data-lon="2.4370">
         <div class="profile-top">
           <div class="avatar">
             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Karim B." loading="lazy">
@@ -139,10 +143,11 @@
           <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Décennale à jour</span>
         </div>
         <div class="profile-stats"><span><strong data-count="47">0</strong> chantiers validés</span><span>Répond en &lt; 2h</span></div>
+        <div class="profile-distance" hidden></div>
         <button type="button" class="btn-chat-preview" data-artisan-name="Karim B." data-artisan-photo="https://randomuser.me/api/portraits/men/32.jpg" data-artisan-slot="Ven. 12 sept., 14h00">Réserver un créneau</button>
       </div>
 
-      <div class="profile-card">
+      <div class="profile-card" data-lat="48.8970" data-lon="2.2530">
         <div class="profile-top">
           <div class="avatar">
             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Nadia F." loading="lazy">
@@ -158,10 +163,11 @@
           <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Décennale à jour</span>
         </div>
         <div class="profile-stats"><span><strong data-count="28">0</strong> chantiers validés</span><span>Répond en &lt; 1h</span></div>
+        <div class="profile-distance" hidden></div>
         <button type="button" class="btn-chat-preview" data-artisan-name="Nadia F." data-artisan-photo="https://randomuser.me/api/portraits/women/44.jpg" data-artisan-slot="Lun. 15 sept., 9h30">Réserver un créneau</button>
       </div>
 
-      <div class="profile-card">
+      <div class="profile-card" data-lat="48.8938" data-lon="2.2875">
         <div class="profile-top">
           <div class="avatar">
             <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Julien T." loading="lazy">
@@ -177,6 +183,7 @@
           <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>1er chantier suivi</span>
         </div>
         <div class="profile-stats"><span><strong data-count="6">0</strong> chantiers validés</span><span>Répond en &lt; 3h</span></div>
+        <div class="profile-distance" hidden></div>
         <button type="button" class="btn-chat-preview" data-artisan-name="Julien T." data-artisan-photo="https://randomuser.me/api/portraits/men/68.jpg" data-artisan-slot="Mer. 17 sept., 11h00">Réserver un créneau</button>
       </div>
 
@@ -258,7 +265,9 @@
         <div class="zone-list-label">COMMUNES COUVERTES</div>
         <div class="chips">
           <div class="chip">Paris</div><div class="chip">Vincennes</div><div class="chip">Saint-Mandé</div>
-          <div class="chip">Courbevoie</div><div class="chip">Levallois</div><div class="chip muted">+ à venir</div>
+          <div class="chip">Courbevoie</div><div class="chip">Levallois</div><div class="chip">Neuilly-sur-Seine</div>
+          <div class="chip">Boulogne-Billancourt</div><div class="chip">Clichy</div><div class="chip">Pantin</div>
+          <div class="chip muted">+ à venir</div>
         </div>
       </div>
     </div>
@@ -444,6 +453,53 @@
   attachRipple('.btn-primary, .nav-cta, .btn-chat-preview', 'rgba(255,255,255,0.45)');
   attachRipple('.btn-light', 'rgba(20,32,61,0.15)');
   attachRipple('.btn-outline', 'rgba(198,138,46,0.4)');
+  attachRipple('.btn-geo', 'rgba(20,32,61,0.15)');
+
+  function haversineKm(lat1, lon1, lat2, lon2) {
+    var R = 6371;
+    var dLat = (lat2 - lat1) * Math.PI / 180;
+    var dLon = (lon2 - lon1) * Math.PI / 180;
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  var geoBtn = document.getElementById('geoBtn');
+  var geoStatus = document.getElementById('geoStatus');
+  var profileGrid = document.getElementById('profileGrid');
+  if (geoBtn && profileGrid) {
+    geoBtn.addEventListener('click', function () {
+      if (!('geolocation' in navigator)) {
+        geoStatus.textContent = "La géolocalisation n'est pas disponible sur cet appareil.";
+        return;
+      }
+      geoBtn.disabled = true;
+      geoStatus.textContent = 'Localisation en cours…';
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        var lat = pos.coords.latitude, lon = pos.coords.longitude;
+        var cards = Array.from(profileGrid.querySelectorAll('.profile-card'));
+        cards.forEach(function (card) {
+          var clat = parseFloat(card.getAttribute('data-lat'));
+          var clon = parseFloat(card.getAttribute('data-lon'));
+          var d = haversineKm(lat, lon, clat, clon);
+          card.setAttribute('data-dist', d);
+          var badge = card.querySelector('.profile-distance');
+          if (badge) {
+            badge.hidden = false;
+            badge.textContent = 'à ' + (d < 1 ? Math.round(d * 1000) + ' m' : d.toFixed(1) + ' km') + ' de vous';
+          }
+        });
+        cards.sort(function (a, b) { return parseFloat(a.getAttribute('data-dist')) - parseFloat(b.getAttribute('data-dist')); });
+        cards.forEach(function (card) { profileGrid.appendChild(card); });
+        geoStatus.textContent = 'Artisans triés du plus proche au plus loin.';
+        geoBtn.disabled = false;
+      }, function () {
+        geoBtn.disabled = false;
+        geoStatus.textContent = 'Localisation refusée ou indisponible — impossible de trier par proximité.';
+      }, { enableHighAccuracy: false, timeout: 8000 });
+    });
+  }
 
   var chatOverlay = document.getElementById('chatOverlay');
   if (chatOverlay) {
