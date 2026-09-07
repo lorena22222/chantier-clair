@@ -43,11 +43,13 @@
       </div>
     </div>
     <div class="ticket">
-      <div class="ticket-head"><span class="t-label">Suivi du chantier</span><span class="t-id">№ 0847 — Plomberie, Montreuil</span></div>
-      <div class="stage done"><div class="stage-dot"></div><div><div class="stage-title">Acompte versé</div><div class="stage-sub">180 € bloqués, pas encore à l'artisan</div></div></div>
-      <div class="stage done"><div class="stage-dot"></div><div><div class="stage-title">Intervention réalisée</div><div class="stage-sub">Photos avant/après ajoutées</div></div></div>
-      <div class="stage active"><div class="stage-dot"></div><div><div class="stage-title">En attente de votre validation</div><div class="stage-sub">Le solde se libère dès que vous confirmez</div></div></div>
-      <div class="stage"><div class="stage-dot"></div><div><div class="stage-title">Paiement versé à l'artisan</div></div></div>
+      <div class="ticket-head"><span class="t-label"><span class="t-live"></span>Suivi du chantier</span><span class="t-id">№ 0847 — Plomberie, Montreuil</span></div>
+      <div class="timeline">
+        <div class="stage done"><div class="stage-dot"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#FBF9F4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="stage-title">Acompte versé</div><div class="stage-sub">180 € bloqués, pas encore à l'artisan</div></div></div>
+        <div class="stage done"><div class="stage-dot"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#FBF9F4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="stage-title">Intervention réalisée</div><div class="stage-sub">Photos avant/après ajoutées</div></div></div>
+        <div class="stage active"><div class="stage-dot"><span class="dot-inner"></span></div><div><div class="stage-title">En attente de votre validation</div><div class="stage-sub">Le solde se libère dès que vous confirmez</div></div></div>
+        <div class="stage"><div class="stage-dot"></div><div><div class="stage-title">Paiement versé à l'artisan</div></div></div>
+      </div>
     </div>
   </section>
 
@@ -112,49 +114,7 @@
   </section>
 </div>
 
-<section class="story">
-  <div class="wrap">
-    <div><h2>C'EST UN PROBLÈME QU'ON CONNAÎT TOUS, OU PRESQUE.</h2></div>
-    <div>
-      <div class="quote-card">
-        <p>"Le plombier est venu une fois, il n'avait pas fini. Il devait repasser. Il n'a plus jamais répondu."</p>
-        <div class="cite">— une histoire beaucoup trop courante</div>
-      </div>
-      <div class="stat-row">
-        <div><div class="stat-num">1 sur 3</div><div class="stat-label">particuliers rapportent un litige avec un artisan</div></div>
-        <div><div class="stat-num">0 €</div><div class="stat-label">versés à l'artisan tant que le chantier n'est pas validé</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="how">
-  <div class="wrap">
-    <div class="section-head"><div class="mono-label">Comment ça marche</div><h2>TROIS ÉTAPES, DANS CET ORDRE, À CHAQUE FOIS.</h2></div>
-    <div class="steps">
-      <div class="step"><div class="step-num">01</div><h3>Devis &amp; vérification</h3><p>Vous recevez un devis clair d'un artisan vérifié — SIRET, Kbis et assurance décennale déjà contrôlés.</p></div>
-      <div class="step"><div class="step-num">02</div><h3>Paiement séquestré</h3><p>Votre acompte est bloqué, pas versé directement à l'artisan. Personne n'est payé pour un travail non fait.</p></div>
-      <div class="step"><div class="step-num">03</div><h3>Vous validez, l'argent se libère</h3><p>Le chantier terminé et confirmé par vous, le paiement part à l'artisan.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="trust">
-  <div class="wrap">
-    <div>
-      <div class="seal"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <p style="font-family:'Source Serif 4',serif; color:var(--ink-soft); font-size:15px; max-width:280px;">Un badge qui veut dire quelque chose — pas une étoile qu'on distribue à tout le monde.</p>
-    </div>
-    <div class="criteria-list">
-      <div class="criterion"><span class="c-mark">01</span><div><h3>SIRET &amp; Kbis contrôlés</h3><p>L'entreprise existe, elle est déclarée, elle est en règle.</p></div></div>
-      <div class="criterion"><span class="c-mark">02</span><div><h3>Assurance décennale à jour</h3><p>Vous êtes couvert, même après coup, sur les gros travaux.</p></div></div>
-      <div class="criterion"><span class="c-mark">03</span><div><h3>Premier chantier suivi de près</h3><p>Chaque nouveau profil passe un premier chantier sous surveillance renforcée.</p></div></div>
-      <div class="criterion"><span class="c-mark">04</span><div><h3>Avis vérifiés, chantier par chantier</h3><p>Un avis n'existe que rattaché à un paiement réellement effectué.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="profiles">
+<section class="profiles reveal">
   <div class="wrap">
     <div class="section-head">
       <div class="mono-label" style="color:var(--gold-deep); font-size:13px; font-weight:600; margin-bottom:14px;">Des profils, pas des inconnus</div>
@@ -220,7 +180,49 @@
   </div>
 </section>
 
-<section class="zone">
+<section class="story reveal">
+  <div class="wrap">
+    <div><h2>C'EST UN PROBLÈME QU'ON CONNAÎT TOUS, OU PRESQUE.</h2></div>
+    <div>
+      <div class="quote-card">
+        <p>"Le plombier est venu une fois, il n'avait pas fini. Il devait repasser. Il n'a plus jamais répondu."</p>
+        <div class="cite">— une histoire beaucoup trop courante</div>
+      </div>
+      <div class="stat-row">
+        <div><div class="stat-num">1 sur 3</div><div class="stat-label">particuliers rapportent un litige avec un artisan</div></div>
+        <div><div class="stat-num">0 €</div><div class="stat-label">versés à l'artisan tant que le chantier n'est pas validé</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how reveal">
+  <div class="wrap">
+    <div class="section-head"><div class="mono-label">Comment ça marche</div><h2>TROIS ÉTAPES, DANS CET ORDRE, À CHAQUE FOIS.</h2></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><h3>Devis &amp; vérification</h3><p>Vous recevez un devis clair d'un artisan vérifié — SIRET, Kbis et assurance décennale déjà contrôlés.</p></div>
+      <div class="step"><div class="step-num">02</div><h3>Paiement séquestré</h3><p>Votre acompte est bloqué, pas versé directement à l'artisan. Personne n'est payé pour un travail non fait.</p></div>
+      <div class="step"><div class="step-num">03</div><h3>Vous validez, l'argent se libère</h3><p>Le chantier terminé et confirmé par vous, le paiement part à l'artisan.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="trust reveal">
+  <div class="wrap">
+    <div>
+      <div class="seal"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <p style="font-family:'Source Serif 4',serif; color:var(--ink-soft); font-size:15px; max-width:280px;">Un badge qui veut dire quelque chose — pas une étoile qu'on distribue à tout le monde.</p>
+    </div>
+    <div class="criteria-list">
+      <div class="criterion"><span class="c-mark">01</span><div><h3>SIRET &amp; Kbis contrôlés</h3><p>L'entreprise existe, elle est déclarée, elle est en règle.</p></div></div>
+      <div class="criterion"><span class="c-mark">02</span><div><h3>Assurance décennale à jour</h3><p>Vous êtes couvert, même après coup, sur les gros travaux.</p></div></div>
+      <div class="criterion"><span class="c-mark">03</span><div><h3>Premier chantier suivi de près</h3><p>Chaque nouveau profil passe un premier chantier sous surveillance renforcée.</p></div></div>
+      <div class="criterion"><span class="c-mark">04</span><div><h3>Avis vérifiés, chantier par chantier</h3><p>Un avis n'existe que rattaché à un paiement réellement effectué.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="zone reveal">
   <div class="wrap">
     <h2>PARIS, ET JUSTE À CÔTÉ AUSSI.</h2>
     <p class="sub">On démarre volontairement resserré : deux métiers, une zone qu'on connaît bien, le temps de bien faire les choses. La France viendra ensuite, ville par ville.</p>
@@ -269,6 +271,22 @@
 </section>
 
 <footer>Chantier Clair — Paris &amp; proche banlieue · Plomberie &amp; électricité · Paiement toujours séquestré</footer>
+
+<script>
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+  }
+</script>
 
 </body>
 </html>
