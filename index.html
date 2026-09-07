@@ -23,16 +23,87 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Chantier Clair",
+  "url": "https://lorena22222.github.io/chantier-clair/",
+  "logo": "https://lorena22222.github.io/chantier-clair/favicon.svg",
+  "image": "https://lorena22222.github.io/chantier-clair/og-image.png",
+  "description": "Plateforme mettant en relation des particuliers avec des artisans vérifiés (plomberie, électricité) à Paris et proche banlieue, avec paiement sécurisé jusqu'à validation du chantier.",
+  "areaServed": [
+    { "@type": "City", "name": "Paris" },
+    { "@type": "City", "name": "Vincennes" },
+    { "@type": "City", "name": "Saint-Mandé" },
+    { "@type": "City", "name": "Courbevoie" },
+    { "@type": "City", "name": "Levallois-Perret" },
+    { "@type": "City", "name": "Neuilly-sur-Seine" },
+    { "@type": "City", "name": "Boulogne-Billancourt" },
+    { "@type": "City", "name": "Clichy" },
+    { "@type": "City", "name": "Pantin" }
+  ],
+  "priceRange": "€€",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "340"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Est-ce payant pour moi ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chantier Clair prend une petite commission sur le paiement, une fois le chantier validé. Jamais de frais cachés, jamais avant que le travail soit fait."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Que se passe-t-il en cas de désaccord ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le paiement reste bloqué tant que vous n'avez pas validé le chantier. En cas de litige, notre équipe intervient avant que l'argent soit débloqué à l'artisan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quand l'artisan est-il payé ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dès que vous confirmez que le chantier est terminé et conforme. Le virement part sous 24h vers l'artisan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment devenir artisan partenaire ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Envoyez votre SIRET et votre attestation décennale. Après vérification, votre premier chantier est suivi de près avant d'ouvrir l'accès complet à la plateforme."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <header class="site-header">
 <div class="wrap">
-  <nav>
+  <nav id="siteNav">
     <div class="logo brand-face">
       <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       CHANTIER <span style="color:var(--gold-deep)">CLAIR</span>
     </div>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <div class="nav-links">
       <a href="#comment-ca-marche">Comment ça marche</a>
       <a href="#devenir-artisan">Devenir artisan vérifié</a>
@@ -483,6 +554,21 @@
         requestAnimationFrame(loop);
       })(performance.now());
     }
+  }
+
+  var navToggle = document.getElementById('navToggle');
+  var siteNav = document.getElementById('siteNav');
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', function () {
+      var open = siteNav.classList.toggle('menu-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    siteNav.querySelectorAll('.nav-links a, .nav-cta').forEach(function (link) {
+      link.addEventListener('click', function () {
+        siteNav.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
   }
 
   var header = document.querySelector('.site-header');

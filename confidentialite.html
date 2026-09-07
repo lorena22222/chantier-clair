@@ -22,11 +22,14 @@
 
 <header class="site-header">
 <div class="wrap">
-  <nav>
+  <nav id="siteNav">
     <a href="index.html" class="logo brand-face">
       <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       CHANTIER <span style="color:var(--gold-deep)">CLAIR</span>
     </a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <div class="nav-links">
       <a href="index.html#comment-ca-marche">Comment ça marche</a>
       <a href="index.html#devenir-artisan">Devenir artisan vérifié</a>
@@ -69,6 +72,17 @@
 </div>
 
 <footer>Chantier Clair — Paris &amp; proche banlieue · Plomberie &amp; électricité · Paiement toujours sécurisé</footer>
+
+<script>
+  var navToggle = document.getElementById('navToggle');
+  var siteNav = document.getElementById('siteNav');
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', function () {
+      var open = siteNav.classList.toggle('menu-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+</script>
 
 </body>
 </html>
