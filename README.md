@@ -61,3 +61,9 @@ Toutes les couleurs et variables de design sont centralisées en haut de
 Les liens `#` (nav, boutons "Trouver un artisan", etc.) sont à connecter
 aux vraies pages/actions (formulaire, prise de contact, back-office) au
 fur et à mesure du développement du produit.
+
+Les photos des artisans (Karim B., Nadia F., Julien T.) utilisent pour
+l'instant des portraits de démonstration (`randomuser.me/api/portraits`),
+le temps d'avoir de vraies photos des artisans partenaires — il suffit de
+remplacer les URLs `src="https://randomuser.me/..."` dans `index.html`
+par les vraies photos une fois disponibles.
