@@ -1,7 +1,7 @@
 # Chantier Clair
 
 Site vitrine statique — plomberie & électricité, Paris & proche banlieue.
-Paiement séquestré, artisans vérifiés (SIRET, Kbis, assurance décennale).
+Paiement sécurisé, artisans vérifiés (SIRET, Kbis, assurance décennale).
 
 ## Structure
 
