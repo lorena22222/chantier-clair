@@ -221,6 +221,14 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .chip:not(.muted):hover { background: var(--ink); color: var(--white); transform: translateY(-1px); }
 .chip.muted { border-color: var(--line); color: var(--ink-soft); }
 
+.become-pro { padding: 88px 0; background: var(--paper-2); }
+.become-pro-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.become-pro-inner h2 { font-size: 28px; margin-top: 12px; }
+.become-pro-lede { font-family: 'Source Serif 4', serif; font-size: 16px; color: var(--ink-soft); margin-top: 18px; max-width: 400px; }
+.become-pro-steps { display: flex; flex-direction: column; gap: 18px; }
+.become-pro-step { display: flex; align-items: baseline; gap: 14px; font-family: 'Source Serif 4', serif; font-size: 15px; color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; }
+.become-pro-cta { align-self: flex-start; margin-top: 4px; }
+
 .faq { padding: 92px 0; }
 .faq-list { border-top: 1px solid var(--line); max-width: 720px; }
 .faq-item { border-bottom: 1px solid var(--line); }
@@ -275,7 +283,7 @@ footer { padding: 32px 0; text-align: center; font-family: 'Space Grotesk', sans
 .chat-modal-note { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: var(--ink-soft); margin-top: 8px; text-align: center; }
 
 @media (max-width: 860px) {
-  .hero, .story .wrap, .trust .wrap, .zone-grid { grid-template-columns: 1fr; }
+  .hero, .story .wrap, .trust .wrap, .zone-grid, .become-pro-inner { grid-template-columns: 1fr; }
   .hero h1 { font-size: 30px; }
   .steps { grid-template-columns: 1fr; }
   .nav-links { display: none; }
