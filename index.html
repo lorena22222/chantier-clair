@@ -141,7 +141,7 @@
       <a href="#devenir-artisan">Devenir artisan vérifié</a>
       <a href="#zone-couverte">Zone couverte</a>
     </div>
-    <a href="#profils" class="nav-cta">Trouver un artisan</a>
+    <a href="trouver-artisan.html" class="nav-cta">Trouver un artisan</a>
   </nav>
 </div>
 </header>
@@ -157,7 +157,7 @@
       <h1>VÉRIFIÉ AVANT.<br><span class="accent">PAYÉ SEULEMENT APRÈS.</span></h1>
       <p class="lede">Chantier Clair ne met en avant que des artisans vérifiés, SIRET et assurance décennale à l'appui. Le paiement reste en sécurité jusqu'à ce que le travail soit vraiment fini.</p>
       <div class="hero-actions">
-        <a href="#profils" class="btn-primary">Trouver un artisan vérifié</a>
+        <a href="trouver-artisan.html" class="btn-primary">Trouver un artisan vérifié</a>
         <a href="#comment-ca-marche" class="btn-secondary">Voir comment ça marche</a>
       </div>
       <div class="hero-trust">
@@ -283,8 +283,7 @@
       <h2>DES EXPERTS QU'ON PEUT VRAIMENT ÉVALUER.</h2>
     </div>
     <div class="geo-locate">
-      <button type="button" id="geoBtn" class="btn-geo"><svg class="geo-pin" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg> Trouver les artisans les plus proches de moi</button>
-      <p class="geo-status" id="geoStatus" aria-live="polite"></p>
+      <a href="trouver-artisan.html" id="geoBtn" class="btn-geo"><svg class="geo-pin" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg> Trouver les artisans les plus proches de moi</a>
     </div>
     <div class="profile-grid" id="profileGrid">
 
@@ -537,7 +536,7 @@
   <div class="wrap">
     <h2>LE PROCHAIN CHANTIER N'A PAS BESOIN D'ÊTRE UNE LOTERIE.</h2>
     <div class="cta-actions">
-      <a href="#profils" class="btn-light">Trouver un artisan</a>
+      <a href="trouver-artisan.html" class="btn-light">Trouver un artisan</a>
       <a href="devenir-artisan.html" class="btn-outline">Je suis artisan, je m'inscris</a>
     </div>
   </div>
@@ -775,50 +774,6 @@
       Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
       Math.sin(dLon / 2) * Math.sin(dLon / 2);
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  }
-
-  var geoBtn = document.getElementById('geoBtn');
-  var geoStatus = document.getElementById('geoStatus');
-  var profileGrid = document.getElementById('profileGrid');
-  if (geoBtn && profileGrid) {
-    var sortByPosition = function (lat, lon, statusText) {
-      var cards = Array.from(profileGrid.querySelectorAll('.profile-card'));
-      cards.forEach(function (card) {
-        var clat = parseFloat(card.getAttribute('data-lat'));
-        var clon = parseFloat(card.getAttribute('data-lon'));
-        var d = haversineKm(lat, lon, clat, clon);
-        card.setAttribute('data-dist', d);
-        var badge = card.querySelector('.profile-distance');
-        if (badge) {
-          badge.hidden = false;
-          badge.textContent = 'à ' + (d < 1 ? Math.round(d * 1000) + ' m' : d.toFixed(1) + ' km') + ' de vous';
-        }
-      });
-      cards.sort(function (a, b) { return parseFloat(a.getAttribute('data-dist')) - parseFloat(b.getAttribute('data-dist')); });
-      cards.forEach(function (card) { profileGrid.appendChild(card); });
-      geoStatus.textContent = statusText;
-      geoBtn.disabled = false;
-    };
-
-    // Courbevoie : position de repli si la géolocalisation réelle est
-    // refusée ou indisponible, pour que la démo montre toujours un
-    // résultat. À retirer une fois qu'il y aura assez d'artisans réels pour
-    // que ce filtre s'appuie uniquement sur la vraie position du visiteur.
-    var FALLBACK_LAT = 48.8970, FALLBACK_LON = 2.2530;
-
-    geoBtn.addEventListener('click', function () {
-      if (!('geolocation' in navigator)) {
-        sortByPosition(FALLBACK_LAT, FALLBACK_LON, 'Position simulée (Courbevoie) : la géolocalisation n\'est pas disponible sur cet appareil.');
-        return;
-      }
-      geoBtn.disabled = true;
-      geoStatus.textContent = 'Localisation en cours…';
-      navigator.geolocation.getCurrentPosition(function (pos) {
-        sortByPosition(pos.coords.latitude, pos.coords.longitude, 'Artisans triés du plus proche au plus loin.');
-      }, function () {
-        sortByPosition(FALLBACK_LAT, FALLBACK_LON, 'Localisation refusée : position simulée (Courbevoie) utilisée à la place.');
-      }, { enableHighAccuracy: false, timeout: 8000 });
-    });
   }
 
   var mapEl = document.getElementById('zoneMap');

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trouver un artisan près de chez vous · Chantier Clair</title>
+<meta name="description" content="Localisez les artisans vérifiés Chantier Clair les plus proches de chez vous, comparez leurs disponibilités et réservez un créneau en quelques clics.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#14203D">
+<meta property="og:title" content="Trouver un artisan près de chez vous · Chantier Clair">
+<meta property="og:description" content="Artisans vérifiés SIRET et décennale, triés par distance, avec leur prochaine disponibilité.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lorena22222.github.io/chantier-clair/trouver-artisan.html">
+<meta property="og:image" content="https://lorena22222.github.io/chantier-clair/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trouver un artisan près de chez vous · Chantier Clair">
+<meta name="twitter:description" content="Artisans vérifiés SIRET et décennale, triés par distance, avec leur prochaine disponibilité.">
+<meta name="twitter:image" content="https://lorena22222.github.io/chantier-clair/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .results-hero { padding: 52px 0 8px; text-align: center; }
+  .results-hero .mono-label { font-family: 'Space Grotesk', sans-serif; color: var(--gold-deep); font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+  .results-hero h1 { font-size: 32px; max-width: 620px; margin: 0 auto 14px; }
+  .results-hero p { font-family: 'Source Serif 4', serif; color: var(--ink-soft); font-size: 15.5px; max-width: 520px; margin: 0 auto; }
+  .results-locate { text-align: center; margin: 28px 0 44px; }
+  .results-section { padding: 0 0 100px; background: var(--paper-2); }
+  .results-section .profile-grid { padding-top: 44px; }
+  @media (max-width: 860px) { .results-section .profile-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+<div class="wrap">
+  <nav id="siteNav">
+    <a href="index.html" class="logo brand-face">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      CHANTIER <span style="color:var(--gold-deep)">CLAIR</span>
+    </a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html#comment-ca-marche">Comment ça marche</a>
+      <a href="index.html#devenir-artisan">Devenir artisan vérifié</a>
+      <a href="index.html#zone-couverte">Zone couverte</a>
+    </div>
+    <a href="trouver-artisan.html" class="nav-cta">Trouver un artisan</a>
+  </nav>
+</div>
+</header>
+
+<div class="wrap results-hero">
+  <div class="mono-label">Des profils, pas des inconnus</div>
+  <h1>LES ARTISANS VÉRIFIÉS LES PLUS PROCHES DE CHEZ VOUS.</h1>
+  <p>Comparez leurs avis, leur taux de fiabilité et leur prochaine disponibilité, puis réservez un créneau directement. Aucune inscription nécessaire pour chercher, seulement au moment de la demande.</p>
+</div>
+
+<div class="wrap results-locate">
+  <button type="button" id="geoBtn" class="btn-geo"><svg class="geo-pin" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg> Relocaliser</button>
+  <p class="geo-status" id="geoStatus" aria-live="polite">Localisation en cours…</p>
+</div>
+
+<section class="results-section">
+  <div class="wrap">
+    <div class="profile-grid" id="profileGrid">
+
+      <div class="profile-card" data-lat="48.8566" data-lon="2.3522">
+        <div class="profile-top">
+          <div class="avatar">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Antoine B." loading="lazy">
+          </div>
+          <div>
+            <div class="profile-name">Antoine B.</div>
+            <div class="profile-trade"><svg class="trade-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2 2.3-2.3z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Plombier, 8 ans d'expérience</div>
+          </div>
+        </div>
+        <div class="profile-rating"><span class="stars">★★★★★</span><span class="rating-num">4.9</span><span class="rating-count">(32 avis)</span></div>
+        <div class="profile-badges">
+          <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>SIRET vérifié</span>
+          <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Décennale à jour</span>
+        </div>
+        <div class="profile-stats"><span><strong>47</strong> chantiers validés</span><span>Répond en &lt; 2h</span></div>
+        <div class="profile-reliability"><svg class="trade-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>0% d'annulation avant 24h</div>
+        <div class="profile-distance" hidden></div>
+        <div class="profile-next-slot" hidden></div>
+        <button type="button" class="btn-chat-preview" data-artisan-name="Antoine B." data-artisan-photo="https://randomuser.me/api/portraits/men/32.jpg" data-artisan-slots="Ven. 12 sept., 14h00|Sam. 13 sept., 10h00|Lun. 15 sept., 9h00">Réserver un créneau</button>
+      </div>
+
+      <div class="profile-card" data-lat="48.8970" data-lon="2.2530">
+        <div class="profile-top">
+          <div class="avatar">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Nadia F." loading="lazy">
+          </div>
+          <div>
+            <div class="profile-name">Nadia F.</div>
+            <div class="profile-trade"><svg class="trade-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>Électricienne, 12 ans d'expérience</div>
+          </div>
+        </div>
+        <div class="profile-rating"><span class="stars">★★★★★</span><span class="rating-num">5.0</span><span class="rating-count">(19 avis)</span></div>
+        <div class="profile-badges">
+          <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>SIRET vérifié</span>
+          <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Décennale à jour</span>
+        </div>
+        <div class="profile-stats"><span><strong>28</strong> chantiers validés</span><span>Répond en &lt; 1h</span></div>
+        <div class="profile-reliability"><svg class="trade-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>0% d'annulation avant 24h</div>
+        <div class="profile-distance" hidden></div>
+        <div class="profile-next-slot" hidden></div>
+        <button type="button" class="btn-chat-preview" data-artisan-name="Nadia F." data-artisan-photo="https://randomuser.me/api/portraits/women/44.jpg" data-artisan-slots="Lun. 15 sept., 9h30|Mar. 16 sept., 15h00|Jeu. 18 sept., 11h00">Réserver un créneau</button>
+      </div>
+
+      <div class="profile-card" data-lat="48.8938" data-lon="2.2875">
+        <div class="profile-top">
+          <div class="avatar">
+            <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Julien T." loading="lazy">
+          </div>
+          <div>
+            <div class="profile-name">Julien T.</div>
+            <div class="profile-trade"><svg class="trade-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2 2.3-2.3z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Plombier, 5 ans d'expérience</div>
+          </div>
+        </div>
+        <div class="profile-rating"><span class="stars">★★★★★</span><span class="rating-num">4.8</span><span class="rating-count">(14 avis)</span></div>
+        <div class="profile-badges">
+          <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>SIRET vérifié</span>
+          <span class="p-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9 17.5 L20 5" stroke="#C68A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>1er chantier suivi</span>
+        </div>
+        <div class="profile-stats"><span><strong>6</strong> chantiers validés</span><span>Répond en &lt; 3h</span></div>
+        <div class="profile-reliability"><svg class="trade-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>0% d'annulation avant 24h</div>
+        <div class="profile-distance" hidden></div>
+        <div class="profile-next-slot" hidden></div>
+        <button type="button" class="btn-chat-preview" data-artisan-name="Julien T." data-artisan-photo="https://randomuser.me/api/portraits/men/68.jpg" data-artisan-slots="Mer. 17 sept., 11h00|Ven. 19 sept., 14h30|Sam. 20 sept., 9h30">Réserver un créneau</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21h-4V9z"/></svg></a>
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5H16l.4-3H13.5V8.4c0-.87.24-1.46 1.5-1.46H16.5V4.3C16.2 4.26 15.2 4.17 14 4.17c-2.4 0-4 1.46-4 4.15V10.5H7.5v3H10V21h3.5z"/></svg></a>
+      <a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.9 10.4 20.4 3h-1.6l-5.6 6.4L8.7 3H3l6.8 9.7L3 21h1.6l5.9-6.8L15.3 21H21l-7.1-10.6zM11.8 13.2l-.7-1L5.6 4.2h2.4l4.4 6.3.7 1 5.8 8.3h-2.4l-4.7-6.6z"/></svg></a>
+    </div>
+    <div class="footer-legal">
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="cgu.html">CGU</a>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:contact@chantier-clair.fr">Contact</a>
+    </div>
+    <p class="footer-tagline">Chantier Clair · Paris &amp; proche banlieue · Plomberie &amp; électricité · Paiement toujours sécurisé</p>
+  </div>
+</footer>
+
+<div class="chat-overlay" id="chatOverlay" aria-hidden="true">
+  <div class="chat-backdrop" data-chat-close></div>
+  <div class="chat-modal" role="dialog" aria-modal="true" aria-labelledby="chatModalName">
+    <div class="chat-modal-head">
+      <div class="chat-modal-artisan">
+        <img class="chat-modal-avatar" src="" alt="">
+        <div>
+          <div class="chat-modal-name" id="chatModalName"></div>
+          <div class="chat-modal-status"><span class="t-live"></span><span class="chat-modal-slot">Choix du créneau</span></div>
+        </div>
+      </div>
+      <button class="chat-modal-close" type="button" data-chat-close aria-label="Fermer l'aperçu">✕</button>
+    </div>
+
+    <div class="chat-step" id="stepSlots">
+      <p class="chat-step-label">Choisissez un créneau disponible</p>
+      <div class="chat-slot-list" id="chatSlotList"></div>
+      <button type="button" class="btn-primary chat-slot-submit" id="chatSlotSubmit" disabled>Demander ce créneau</button>
+      <p class="chat-step-hint">Votre demande n'engage rien : l'artisan doit d'abord confirmer.</p>
+    </div>
+
+    <div class="chat-step" id="stepPending" hidden>
+      <div class="chat-pending-spinner"><span></span><span></span><span></span></div>
+      <p class="chat-step-text">Demande envoyée pour <strong id="pendingSlot"></strong>.</p>
+      <p class="chat-step-text chat-step-text-muted">En attente de confirmation de <strong id="pendingName"></strong>…</p>
+    </div>
+
+    <div class="chat-step" id="stepChat" hidden>
+      <div class="chat-confirmed-banner"><span class="t-live"></span>Créneau confirmé pour <strong id="confirmedSlot"></strong></div>
+      <div class="chat-modal-body">
+        <div class="chat-bubble chat-bubble-them">Bonjour&nbsp;! Je confirme bien le créneau pour l'intervention. À bientôt.</div>
+        <div class="chat-bubble chat-bubble-me">Parfait, merci beaucoup !</div>
+        <div class="chat-bubble chat-bubble-them">Avec plaisir. N'hésitez pas à m'écrire si vous avez une question avant mon passage 👍</div>
+      </div>
+      <div class="chat-modal-foot">
+        <input type="text" placeholder="Écrire un message…" disabled>
+        <span class="chat-modal-note">Aperçu, la vraie messagerie s'active à la confirmation</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var navToggle = document.getElementById('navToggle');
+  var siteNav = document.getElementById('siteNav');
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', function () {
+      var open = siteNav.classList.toggle('menu-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    siteNav.querySelectorAll('.nav-links a, .nav-cta').forEach(function (link) {
+      link.addEventListener('click', function () {
+        siteNav.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var onHeaderScroll = function () {
+      header.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    onHeaderScroll();
+    window.addEventListener('scroll', onHeaderScroll, { passive: true });
+  }
+
+  function haversineKm(lat1, lon1, lat2, lon2) {
+    var R = 6371;
+    var dLat = (lat2 - lat1) * Math.PI / 180;
+    var dLon = (lon2 - lon1) * Math.PI / 180;
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+  }
+
+  var geoBtn = document.getElementById('geoBtn');
+  var geoStatus = document.getElementById('geoStatus');
+  var profileGrid = document.getElementById('profileGrid');
+
+  // Courbevoie : position de repli si la géolocalisation réelle est
+  // refusée ou indisponible, pour que la démo montre toujours un
+  // résultat. À retirer une fois qu'il y aura assez d'artisans réels pour
+  // que ce filtre s'appuie uniquement sur la vraie position du visiteur.
+  var FALLBACK_LAT = 48.8970, FALLBACK_LON = 2.2530;
+
+  var sortByPosition = function (lat, lon, statusText) {
+    var cards = Array.from(profileGrid.querySelectorAll('.profile-card'));
+    cards.forEach(function (card) {
+      var clat = parseFloat(card.getAttribute('data-lat'));
+      var clon = parseFloat(card.getAttribute('data-lon'));
+      var d = haversineKm(lat, lon, clat, clon);
+      card.setAttribute('data-dist', d);
+      var badge = card.querySelector('.profile-distance');
+      if (badge) {
+        badge.hidden = false;
+        badge.textContent = 'à ' + (d < 1 ? Math.round(d * 1000) + ' m' : d.toFixed(1) + ' km') + ' de vous';
+      }
+      var nextSlotEl = card.querySelector('.profile-next-slot');
+      var btn = card.querySelector('.btn-chat-preview');
+      if (nextSlotEl && btn) {
+        var slots = (btn.getAttribute('data-artisan-slots') || '').split('|').filter(Boolean);
+        if (slots[0]) {
+          nextSlotEl.hidden = false;
+          nextSlotEl.innerHTML = 'Prochaine dispo : <strong>' + slots[0] + '</strong>';
+        }
+      }
+    });
+    cards.sort(function (a, b) { return parseFloat(a.getAttribute('data-dist')) - parseFloat(b.getAttribute('data-dist')); });
+    cards.forEach(function (card) { profileGrid.appendChild(card); });
+    geoStatus.textContent = statusText;
+    geoBtn.disabled = false;
+  };
+
+  var locate = function () {
+    if (!('geolocation' in navigator)) {
+      sortByPosition(FALLBACK_LAT, FALLBACK_LON, 'Position simulée (Courbevoie) : la géolocalisation n\'est pas disponible sur cet appareil.');
+      return;
+    }
+    geoBtn.disabled = true;
+    geoStatus.textContent = 'Localisation en cours…';
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      sortByPosition(pos.coords.latitude, pos.coords.longitude, 'Artisans triés du plus proche au plus loin.');
+    }, function () {
+      sortByPosition(FALLBACK_LAT, FALLBACK_LON, 'Localisation refusée : position simulée (Courbevoie) utilisée à la place.');
+    }, { enableHighAccuracy: false, timeout: 8000 });
+  };
+
+  if (geoBtn && profileGrid) {
+    geoBtn.addEventListener('click', locate);
+    locate();
+  }
+
+  var chatOverlay = document.getElementById('chatOverlay');
+  if (chatOverlay) {
+    var chatName = chatOverlay.querySelector('.chat-modal-name');
+    var chatAvatar = chatOverlay.querySelector('.chat-modal-avatar');
+    var chatStatus = chatOverlay.querySelector('.chat-modal-slot');
+    var stepSlots = document.getElementById('stepSlots');
+    var stepPending = document.getElementById('stepPending');
+    var stepChat = document.getElementById('stepChat');
+    var slotList = document.getElementById('chatSlotList');
+    var slotSubmit = document.getElementById('chatSlotSubmit');
+    var pendingSlotEl = document.getElementById('pendingSlot');
+    var pendingNameEl = document.getElementById('pendingName');
+    var confirmedSlotEl = document.getElementById('confirmedSlot');
+    var selectedSlot = null;
+    var pendingTimer = null;
+
+    var showStep = function (step) {
+      [stepSlots, stepPending, stepChat].forEach(function (s) { s.hidden = (s !== step); });
+    };
+
+    var openChat = function (btn) {
+      var name = btn.getAttribute('data-artisan-name');
+      var slots = (btn.getAttribute('data-artisan-slots') || '').split('|').filter(Boolean);
+      chatName.textContent = name;
+      chatAvatar.src = btn.getAttribute('data-artisan-photo');
+      chatAvatar.alt = name;
+      chatStatus.textContent = 'Choix du créneau';
+      pendingNameEl.textContent = name;
+      selectedSlot = null;
+      slotSubmit.disabled = true;
+      slotList.innerHTML = '';
+      slots.forEach(function (slot) {
+        var opt = document.createElement('button');
+        opt.type = 'button';
+        opt.className = 'chat-slot-option';
+        opt.textContent = slot;
+        opt.addEventListener('click', function () {
+          slotList.querySelectorAll('.chat-slot-option').forEach(function (o) { o.classList.remove('selected'); });
+          opt.classList.add('selected');
+          selectedSlot = slot;
+          slotSubmit.disabled = false;
+        });
+        slotList.appendChild(opt);
+      });
+      showStep(stepSlots);
+      chatOverlay.classList.add('open');
+      chatOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    var closeChat = function () {
+      chatOverlay.classList.remove('open');
+      chatOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (pendingTimer) { clearTimeout(pendingTimer); pendingTimer = null; }
+    };
+
+    slotSubmit.addEventListener('click', function () {
+      if (!selectedSlot) return;
+      pendingSlotEl.textContent = selectedSlot;
+      chatStatus.textContent = 'Demande envoyée';
+      showStep(stepPending);
+      pendingTimer = setTimeout(function () {
+        confirmedSlotEl.textContent = selectedSlot;
+        chatStatus.textContent = 'Créneau confirmé · ' + selectedSlot;
+        showStep(stepChat);
+      }, reduceMotion ? 200 : 2600);
+    });
+
+    document.querySelectorAll('.btn-chat-preview').forEach(function (btn) {
+      btn.addEventListener('click', function () { openChat(btn); });
+    });
+    chatOverlay.querySelectorAll('[data-chat-close]').forEach(function (el) {
+      el.addEventListener('click', closeChat);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && chatOverlay.classList.contains('open')) closeChat();
+    });
+  }
+
+  function attachRipple(selector, color) {
+    document.querySelectorAll(selector).forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        var rect = btn.getBoundingClientRect();
+        var size = Math.max(rect.width, rect.height) * 1.8;
+        var span = document.createElement('span');
+        span.className = 'ripple';
+        span.style.width = span.style.height = size + 'px';
+        span.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        span.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        span.style.background = color;
+        btn.appendChild(span);
+        span.addEventListener('animationend', function () { span.remove(); });
+      });
+    });
+  }
+  attachRipple('.btn-primary, .nav-cta, .btn-chat-preview', 'rgba(255,255,255,0.45)');
+  attachRipple('.btn-geo', 'rgba(20,32,61,0.15)');
+</script>
+
+</body>
+</html>

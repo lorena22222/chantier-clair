@@ -9,6 +9,7 @@ Paiement sécurisé, artisans vérifiés (SIRET, Kbis, assurance décennale).
 chantier-clair/
 ├── index.html            # page principale (hero, visuel, histoire, comment ça marche,
 │                          # confiance, profils artisans, zone Paris, devenir artisan, FAQ, CTA)
+├── trouver-artisan.html   # liste des artisans triés par distance + prochaine dispo (géoloc)
 ├── demande.html           # formulaire "décrire mon besoin" (particuliers)
 ├── devenir-artisan.html   # formulaire de candidature (artisans)
 ├── mentions-legales.html
