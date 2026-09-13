@@ -1,20 +1,42 @@
 # Chantier Clair
 
-Site vitrine statique — plomberie & électricité, Paris & proche banlieue.
+Site vitrine statique, plomberie & électricité, Paris & proche banlieue.
 Paiement sécurisé, artisans vérifiés (SIRET, Kbis, assurance décennale).
 
 ## Structure
 
 ```
 chantier-clair/
-├── index.html      # page unique, toutes les sections (hero, illustration, histoire,
-│                    # comment ça marche, confiance, profils artisans, zone Paris, CTA)
+├── index.html            # page principale (hero, visuel, histoire, comment ça marche,
+│                          # confiance, profils artisans, zone Paris, devenir artisan, FAQ, CTA)
+├── demande.html           # formulaire "décrire mon besoin" (particuliers)
+├── devenir-artisan.html   # formulaire de candidature (artisans)
+├── mentions-legales.html
+├── cgu.html
+├── confidentialite.html
 ├── css/
-│   └── style.css    # feuille de style (identique à la maquette d'origine)
+│   └── style.css    # feuille de style commune à toutes les pages
 ├── favicon.svg       # icône d'onglet (logo Chantier Clair)
+├── og-image.png       # image de partage (réseaux sociaux)
 ├── package.json
 └── README.md
 ```
+
+## Formulaires (Formspree)
+
+`demande.html` et `devenir-artisan.html` envoient un vrai email à chaque
+soumission via [Formspree](https://formspree.io) (gratuit jusqu'à 50
+soumissions/mois, pas de backend à héberger).
+
+Pour activer l'envoi :
+1. Créer un compte Formspree avec l'adresse qui doit recevoir les emails.
+2. Créer un formulaire pour les demandes particuliers, et un pour les
+   candidatures artisans (ou un seul, au choix).
+3. Remplacer `https://formspree.io/f/VOTRE_ID_FORMSPREE` dans l'attribut
+   `action` de chaque `<form>` par l'URL réelle donnée par Formspree.
+
+Tant que ce n'est pas fait, les formulaires affichent un message d'erreur
+propre au lieu d'échouer silencieusement.
 
 Aucun build : c'est du HTML/CSS/JS statique. Chargés depuis des CDN publics :
 les polices Bricolage Grotesque, Space Grotesk et Source Serif 4 (Google
