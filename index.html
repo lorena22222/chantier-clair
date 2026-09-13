@@ -800,15 +800,15 @@
       geoBtn.disabled = false;
     };
 
-    // Paris (Hôtel de Ville) : position de repli si la géolocalisation réelle
-    // est refusée ou indisponible, pour que la démo montre toujours un
+    // Courbevoie : position de repli si la géolocalisation réelle est
+    // refusée ou indisponible, pour que la démo montre toujours un
     // résultat. À retirer une fois qu'il y aura assez d'artisans réels pour
     // que ce filtre s'appuie uniquement sur la vraie position du visiteur.
-    var FALLBACK_LAT = 48.8566, FALLBACK_LON = 2.3522;
+    var FALLBACK_LAT = 48.8970, FALLBACK_LON = 2.2530;
 
     geoBtn.addEventListener('click', function () {
       if (!('geolocation' in navigator)) {
-        sortByPosition(FALLBACK_LAT, FALLBACK_LON, 'Position simulée (Paris centre) : la géolocalisation n\'est pas disponible sur cet appareil.');
+        sortByPosition(FALLBACK_LAT, FALLBACK_LON, 'Position simulée (Courbevoie) : la géolocalisation n\'est pas disponible sur cet appareil.');
         return;
       }
       geoBtn.disabled = true;
@@ -816,7 +816,7 @@
       navigator.geolocation.getCurrentPosition(function (pos) {
         sortByPosition(pos.coords.latitude, pos.coords.longitude, 'Artisans triés du plus proche au plus loin.');
       }, function () {
-        sortByPosition(FALLBACK_LAT, FALLBACK_LON, 'Localisation refusée : position simulée (Paris centre) utilisée à la place.');
+        sortByPosition(FALLBACK_LAT, FALLBACK_LON, 'Localisation refusée : position simulée (Courbevoie) utilisée à la place.');
       }, { enableHighAccuracy: false, timeout: 8000 });
     });
   }
