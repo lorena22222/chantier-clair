@@ -63,8 +63,19 @@ Les liens `#` (nav, boutons "Trouver un artisan", etc.) sont à connecter
 aux vraies pages/actions (formulaire, prise de contact, back-office) au
 fur et à mesure du développement du produit.
 
-Les photos des artisans (Karim B., Nadia F., Julien T.) utilisent pour
+Les photos des artisans (Antoine B., Nadia F., Julien T.) utilisent pour
 l'instant des portraits de démonstration (`randomuser.me/api/portraits`),
 le temps d'avoir de vraies photos des artisans partenaires — il suffit de
 remplacer les URLs `src="https://randomuser.me/..."` dans `index.html`
 par les vraies photos une fois disponibles.
+
+## Crédits photo
+
+Les vignettes "avant/après" du visuel central utilisent deux photos
+Wikimedia Commons sous licence CC-BY, à conserver ou remplacer par de
+vraies photos de chantier dès que possible :
+
+- "Avant" — [Pitting Corrosion on a pipe](https://commons.wikimedia.org/wiki/File:Pitting_Corrosion_on_a_pipe.JPG),
+  © Vsolymossy, CC BY 3.0
+- "Après" — [Copper Water Pipes and Water Line Shutoff](https://commons.wikimedia.org/wiki/File:Copper_Water_Pipes_and_Water_Line_Shutoff.jpg),
+  © Tony Webster, CC BY 2.0
