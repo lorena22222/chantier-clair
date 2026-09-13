@@ -781,34 +781,42 @@
   var geoStatus = document.getElementById('geoStatus');
   var profileGrid = document.getElementById('profileGrid');
   if (geoBtn && profileGrid) {
+    var sortByPosition = function (lat, lon, statusText) {
+      var cards = Array.from(profileGrid.querySelectorAll('.profile-card'));
+      cards.forEach(function (card) {
+        var clat = parseFloat(card.getAttribute('data-lat'));
+        var clon = parseFloat(card.getAttribute('data-lon'));
+        var d = haversineKm(lat, lon, clat, clon);
+        card.setAttribute('data-dist', d);
+        var badge = card.querySelector('.profile-distance');
+        if (badge) {
+          badge.hidden = false;
+          badge.textContent = 'à ' + (d < 1 ? Math.round(d * 1000) + ' m' : d.toFixed(1) + ' km') + ' de vous';
+        }
+      });
+      cards.sort(function (a, b) { return parseFloat(a.getAttribute('data-dist')) - parseFloat(b.getAttribute('data-dist')); });
+      cards.forEach(function (card) { profileGrid.appendChild(card); });
+      geoStatus.textContent = statusText;
+      geoBtn.disabled = false;
+    };
+
+    // Paris (Hôtel de Ville) : position de repli si la géolocalisation réelle
+    // est refusée ou indisponible, pour que la démo montre toujours un
+    // résultat. À retirer une fois qu'il y aura assez d'artisans réels pour
+    // que ce filtre s'appuie uniquement sur la vraie position du visiteur.
+    var FALLBACK_LAT = 48.8566, FALLBACK_LON = 2.3522;
+
     geoBtn.addEventListener('click', function () {
       if (!('geolocation' in navigator)) {
-        geoStatus.textContent = "La géolocalisation n'est pas disponible sur cet appareil.";
+        sortByPosition(FALLBACK_LAT, FALLBACK_LON, 'Position simulée (Paris centre) : la géolocalisation n\'est pas disponible sur cet appareil.');
         return;
       }
       geoBtn.disabled = true;
       geoStatus.textContent = 'Localisation en cours…';
       navigator.geolocation.getCurrentPosition(function (pos) {
-        var lat = pos.coords.latitude, lon = pos.coords.longitude;
-        var cards = Array.from(profileGrid.querySelectorAll('.profile-card'));
-        cards.forEach(function (card) {
-          var clat = parseFloat(card.getAttribute('data-lat'));
-          var clon = parseFloat(card.getAttribute('data-lon'));
-          var d = haversineKm(lat, lon, clat, clon);
-          card.setAttribute('data-dist', d);
-          var badge = card.querySelector('.profile-distance');
-          if (badge) {
-            badge.hidden = false;
-            badge.textContent = 'à ' + (d < 1 ? Math.round(d * 1000) + ' m' : d.toFixed(1) + ' km') + ' de vous';
-          }
-        });
-        cards.sort(function (a, b) { return parseFloat(a.getAttribute('data-dist')) - parseFloat(b.getAttribute('data-dist')); });
-        cards.forEach(function (card) { profileGrid.appendChild(card); });
-        geoStatus.textContent = 'Artisans triés du plus proche au plus loin.';
-        geoBtn.disabled = false;
+        sortByPosition(pos.coords.latitude, pos.coords.longitude, 'Artisans triés du plus proche au plus loin.');
       }, function () {
-        geoBtn.disabled = false;
-        geoStatus.textContent = 'Localisation refusée ou indisponible : impossible de trier par proximité.';
+        sortByPosition(FALLBACK_LAT, FALLBACK_LON, 'Localisation refusée : position simulée (Paris centre) utilisée à la place.');
       }, { enableHighAccuracy: false, timeout: 8000 });
     });
   }
