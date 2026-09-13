@@ -106,6 +106,9 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 
 .showcase { position: relative; max-width: 600px; height: clamp(320px, 42vw, 420px); margin: 0 auto; }
+.showcase::before, .showcase::after { content: ""; position: absolute; border-radius: 50%; filter: blur(46px); z-index: 0; pointer-events: none; }
+.showcase::before { width: 220px; height: 220px; top: 8%; left: 30%; background: radial-gradient(circle, rgba(198,138,46,0.16), transparent 70%); }
+.showcase::after { width: 260px; height: 260px; bottom: 4%; right: 18%; background: radial-gradient(circle, rgba(20,32,61,0.1), transparent 70%); }
 .showcase-dot { position: absolute; border-radius: 50%; }
 .showcase-dot-1 { top: 6%; left: 46%; width: 10px; height: 10px; background: var(--gold); }
 .showcase-dot-2 { top: 66%; left: 8%; width: 7px; height: 7px; background: var(--ink); opacity: 0.5; }
@@ -113,7 +116,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .showcase-icon { position: absolute; width: 22px; height: 22px; opacity: 0.5; }
 .showcase-icon-wrench { top: 46%; left: 44%; transform: rotate(-12deg); }
 .showcase-icon-bolt { bottom: 30%; right: 20%; }
-.showcase-card { position: absolute; will-change: transform; }
+.showcase-card { position: absolute; will-change: transform; z-index: 1; }
 .showcase-card-inner { background: var(--white); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 24px 48px -24px rgba(20,32,61,0.4); }
 
 .showcase-profile { top: 8%; left: 2%; width: clamp(160px, 30vw, 208px); }
@@ -138,6 +141,12 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .showcase-ticket-row { font-family: 'Space Grotesk', sans-serif; font-size: 11.5px; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
 .showcase-ticket-check { width: 15px; height: 15px; border-radius: 50%; background: var(--gold); color: var(--white); font-size: 9px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .showcase-ticket-amount { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px; color: var(--ink); margin-top: 6px; }
+
+.showcase-review { top: 40%; left: 50%; transform: translateX(-50%); width: clamp(150px, 30vw, 190px); z-index: 1; }
+.showcase-review .showcase-card-inner { padding: 14px 16px; text-align: center; transform: rotate(-2deg); }
+.showcase-review-stars { color: var(--gold); letter-spacing: 1px; font-size: 13px; }
+.showcase-review p { font-family: 'Source Serif 4', serif; font-size: 12.5px; color: var(--ink); line-height: 1.4; margin-top: 6px; }
+.showcase-review-author { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 10.5px; color: var(--ink-soft); margin-top: 6px; }
 
 .story { background: var(--ink); color: var(--paper); padding: 84px 0; }
 .story .wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: start; }
@@ -224,6 +233,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .leaflet-tooltip.zone-map-label { background: var(--white); border: 1px solid var(--line); border-radius: 20px; box-shadow: none; padding: 3px 10px; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; color: var(--ink-soft); }
 .leaflet-tooltip.zone-map-label::before { display: none; }
 .leaflet-tooltip.zone-map-label-hub { background: var(--ink); color: var(--paper); font-weight: 700; border-color: var(--ink); }
+.leaflet-tooltip.zone-map-label-soon { background: transparent; border: none; color: var(--ink-soft); font-weight: 400; padding: 1px 6px; }
 .leaflet-popup-content-wrapper { border-radius: 10px; font-family: 'Source Serif 4', serif; }
 .leaflet-popup-content { font-size: 13.5px; color: var(--ink-soft); margin: 10px 14px; }
 .leaflet-popup-content strong { color: var(--ink); font-family: 'Bricolage Grotesque', sans-serif; }
@@ -258,6 +268,10 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .become-pro-cta:hover .arrow { transform: translateX(4px); }
 
 .faq { padding: 92px 0; }
+.faq-tabs { display: inline-flex; gap: 4px; background: var(--paper-2); border-radius: 30px; padding: 4px; margin-bottom: 28px; }
+.faq-tab { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; color: var(--ink-soft); background: none; border: none; padding: 9px 20px; border-radius: 26px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; }
+.faq-tab:hover { color: var(--ink); }
+.faq-tab.active { background: var(--ink); color: var(--white); }
 .faq-list { border-top: 1px solid var(--line); max-width: 720px; }
 .faq-item { border-bottom: 1px solid var(--line); }
 .faq-item summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 2px; cursor: pointer; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 16px; color: var(--ink); list-style: none; transition: color 0.2s ease; }

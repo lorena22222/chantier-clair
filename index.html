@@ -103,6 +103,22 @@
         "@type": "Answer",
         "text": "Envoyez votre SIRET et votre attestation décennale. Après vérification, votre premier chantier est suivi de près avant d'ouvrir l'accès complet à la plateforme."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien coûte la commission ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Une commission parmi les plus basses du secteur, prélevée uniquement sur les chantiers réellement réalisés. Pas d'abonnement, pas de frais fixe, jamais avant d'être payé."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Que se passe-t-il si j'annule un rendez-vous confirmé ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "C'est pénalisé plus strictement qu'une annulation côté client, avec un impact visible sur le taux de fiabilité de l'artisan. C'est le comportement que la plateforme cherche à éliminer en priorité."
+      }
     }
   ]
 }
@@ -211,6 +227,14 @@
         <div class="showcase-card-inner">
           <div class="showcase-ticket-row"><span class="showcase-ticket-check">✓</span> Acompte sécurisé</div>
           <div class="showcase-ticket-amount">180 €</div>
+        </div>
+      </div>
+
+      <div class="showcase-card showcase-review" data-depth="14">
+        <div class="showcase-card-inner">
+          <div class="showcase-review-stars">★★★★★</div>
+          <p>« Rapide, propre, exactement comme prévu. »</p>
+          <span class="showcase-review-author">Sophie · Paris 11ᵉ</span>
         </div>
       </div>
     </div>
@@ -353,11 +377,14 @@
           <div class="chip"><svg class="trade-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>Électricité</div>
           <div class="chip muted">Bientôt — Serrurerie</div><div class="chip muted">Bientôt — Chauffage</div>
         </div>
-        <div class="zone-list-label">COMMUNES COUVERTES</div>
-        <div class="chips">
+        <div class="zone-list-label">COMMUNES COUVERTES DÈS AUJOURD'HUI</div>
+        <div class="chips" style="margin-bottom:28px;">
           <div class="chip">Paris</div><div class="chip">Vincennes</div><div class="chip">Saint-Mandé</div>
-          <div class="chip">Courbevoie</div><div class="chip">Levallois</div><div class="chip">Neuilly-sur-Seine</div>
-          <div class="chip">Boulogne-Billancourt</div><div class="chip">Clichy</div><div class="chip">Pantin</div>
+        </div>
+        <div class="zone-list-label">BIENTÔT</div>
+        <div class="chips">
+          <div class="chip muted">Courbevoie</div><div class="chip muted">Levallois</div><div class="chip muted">Neuilly-sur-Seine</div>
+          <div class="chip muted">Boulogne-Billancourt</div><div class="chip muted">Clichy</div><div class="chip muted">Pantin</div>
           <div class="chip muted">+ à venir</div>
         </div>
       </div>
@@ -410,7 +437,12 @@
       <div class="mono-label">Questions fréquentes</div>
       <h2>CE QU'ON NOUS DEMANDE LE PLUS SOUVENT.</h2>
     </div>
-    <div class="faq-list">
+    <div class="faq-tabs" role="tablist">
+      <button type="button" class="faq-tab active" data-panel="particuliers" role="tab" aria-selected="true">Particuliers</button>
+      <button type="button" class="faq-tab" data-panel="artisans" role="tab" aria-selected="false">Artisans</button>
+    </div>
+
+    <div class="faq-list" data-panel="particuliers">
       <details class="faq-item">
         <summary>Est-ce payant pour moi ?<span class="faq-icon">+</span></summary>
         <p>Non. La commission de Chantier Clair est prélevée sur l'artisan, pas ajoutée à votre facture. Le prix que vous voyez est le prix net, sans frais de plateforme cachés.</p>
@@ -431,9 +463,20 @@
         <summary>Puis-je annuler un rendez-vous ?<span class="faq-icon">+</span></summary>
         <p>Oui, librement et sans frais jusqu'à 24h avant le créneau. En dessous de ce délai, une partie de l'acompte reste acquise à l'artisan en dédommagement. Une annulation côté artisan est pénalisée plus strictement.</p>
       </details>
+    </div>
+
+    <div class="faq-list" data-panel="artisans" hidden>
       <details class="faq-item">
         <summary>Comment devenir artisan partenaire ?<span class="faq-icon">+</span></summary>
         <p>Envoyez votre SIRET et votre attestation décennale. Après vérification, votre premier chantier est suivi de près avant d'ouvrir l'accès complet à la plateforme.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Combien coûte la commission ?<span class="faq-icon">+</span></summary>
+        <p>Une commission parmi les plus basses du secteur, prélevée uniquement sur les chantiers réellement réalisés. Pas d'abonnement, pas de frais fixe, jamais avant d'être payé.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Que se passe-t-il si j'annule un rendez-vous confirmé ?<span class="faq-icon">+</span></summary>
+        <p>C'est pénalisé plus strictement qu'une annulation côté client, avec un impact visible sur votre taux de fiabilité. C'est le comportement qu'on cherche à éliminer en priorité sur la plateforme.</p>
       </details>
     </div>
   </div>
@@ -580,6 +623,20 @@
     }
   }
 
+  var faqTabs = document.querySelectorAll('.faq-tab');
+  if (faqTabs.length) {
+    faqTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        faqTabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        document.querySelectorAll('.faq-list').forEach(function (panel) {
+          panel.hidden = panel.getAttribute('data-panel') !== tab.getAttribute('data-panel');
+        });
+      });
+    });
+  }
+
   var navToggle = document.getElementById('navToggle');
   var siteNav = document.getElementById('siteNav');
   if (navToggle && siteNav) {
@@ -674,9 +731,9 @@
   var mapEl = document.getElementById('zoneMap');
   if (mapEl && window.L) {
     var communes = [
-      { name: 'Paris', lat: 48.8566, lon: 2.3522, hub: true, dir: 'top' },
-      { name: 'Vincennes', lat: 48.8467, lon: 2.4370, dir: 'right' },
-      { name: 'Saint-Mandé', lat: 48.8422, lon: 2.4160, dir: 'right' },
+      { name: 'Paris', lat: 48.8566, lon: 2.3522, hub: true, active: true, dir: 'top' },
+      { name: 'Vincennes', lat: 48.8467, lon: 2.4370, active: true, dir: 'right' },
+      { name: 'Saint-Mandé', lat: 48.8422, lon: 2.4160, active: true, dir: 'right' },
       { name: 'Courbevoie', lat: 48.8970, lon: 2.2530, dir: 'left' },
       { name: 'Levallois-Perret', lat: 48.8938, lon: 2.2875, dir: 'left' },
       { name: 'Neuilly-sur-Seine', lat: 48.8846, lon: 2.2686, dir: 'left' },
@@ -710,14 +767,21 @@
 
     communes.forEach(function (c) {
       var marker = L.circleMarker([c.lat, c.lon], {
-        radius: c.hub ? 10 : 7,
+        radius: c.hub ? 10 : (c.active ? 7 : 6),
         color: c.hub ? '#14203D' : '#A66F1F',
         weight: 2,
         fillColor: c.hub ? '#14203D' : '#C68A2E',
-        fillOpacity: 1
+        fillOpacity: c.active ? 1 : 0.15,
+        dashArray: c.active ? null : '3 3'
       }).addTo(zoneMap);
-      marker.bindTooltip(c.name, { permanent: true, direction: c.dir, offset: [0, 0], className: c.hub ? 'zone-map-label zone-map-label-hub' : 'zone-map-label', opacity: 1 });
-      marker.bindPopup('<strong>' + c.name + '</strong><br>' + (c.hub ? 'Zone de référence' : 'Commune couverte'));
+      marker.bindTooltip(c.name, {
+        permanent: !!c.active,
+        direction: c.dir,
+        offset: [0, 0],
+        className: c.hub ? 'zone-map-label zone-map-label-hub' : (c.active ? 'zone-map-label' : 'zone-map-label zone-map-label-soon'),
+        opacity: c.active ? 1 : 0.85
+      });
+      marker.bindPopup('<strong>' + c.name + '</strong><br>' + (c.hub ? 'Zone de référence' : (c.active ? 'Couvert dès aujourd\'hui' : 'Bientôt couvert')));
     });
   }
 
