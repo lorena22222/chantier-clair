@@ -225,7 +225,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .section-head { max-width: 560px; margin-bottom: 56px; }
 .section-head .mono-label { font-size: 13px; color: var(--gold-deep); font-weight: 600; margin-bottom: 14px; }
 .section-head h2 { font-size: 28px; }
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .step { background: var(--paper); padding: 36px 30px; transition: background 0.25s ease; }
 .step:hover { background: var(--white); }
 .step-num { font-size: 13px; color: var(--gold-deep); font-weight: 600; margin-bottom: 22px; }
@@ -316,6 +316,18 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .chip:not(.muted):hover .trade-icon { color: var(--gold); }
 .chip:not(.muted):hover { background: var(--ink); color: var(--white); transform: translateY(-1px); }
 .chip.muted { border-color: var(--line); color: var(--ink-soft); }
+
+.path-switch { padding: 8px 0 56px; }
+.path-switch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.path-card { display: flex; flex-direction: column; gap: 10px; padding: 28px 30px; border: 1.5px solid var(--ink); border-radius: 14px; background: var(--white); transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease; }
+.path-card:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -30px rgba(20,32,61,0.35); }
+.path-card-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--gold-deep); text-transform: uppercase; letter-spacing: 0.03em; }
+.path-card-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
+.path-card .arrow { transition: transform 0.2s ease; }
+.path-card:hover .arrow { transform: translateX(4px); }
+.path-card-pro { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.path-card-pro .path-card-eyebrow { color: var(--gold); }
+@media (max-width: 640px) { .path-switch-grid { grid-template-columns: 1fr; } }
 
 .become-pro { padding: 88px 0; background: var(--paper-2); position: relative; overflow: hidden; }
 .become-pro::before { content: ""; position: absolute; top: -140px; right: -120px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(198,138,46,0.2), transparent 70%); pointer-events: none; }
