@@ -44,29 +44,71 @@
     <p class="lede" style="max-width:440px;">Fini les allers-retours entre SMS, carnet de rendez-vous et relances de paiement. Voici comment Chantier Clair simplifie votre quotidien.</p>
     <a href="https://chantier-clair-app.vercel.app/devenir-artisan" class="btn-primary">Devenir artisan vérifié</a>
   </div>
-  <div class="ticket">
-    <div class="ticket-head">
-      <span class="t-label"><span class="t-live"></span>Mon espace artisan</span>
-      <span class="t-id">app.chantier-clair</span>
-    </div>
-    <div class="app-mock-tabs">
-      <span class="app-mock-tab active">🕓 Demandes de devis (2)</span>
-      <span class="app-mock-tab">🔧 En cours</span>
-      <span class="app-mock-tab">✅ Terminés</span>
-    </div>
-    <div class="app-mock-card">
-      <div class="app-mock-card-top">
-        <span>Camille D.</span>
-        <span class="app-mock-status">En attente</span>
+  <div class="app-shell-wrap">
+    <div class="app-shell" id="appShell">
+      <aside class="app-sidebar">
+        <span class="app-sidebar-logo">✓</span>
+        <button type="button" class="app-sidebar-icon active" title="Chantiers">📋</button>
+        <button type="button" class="app-sidebar-icon" title="Agenda">📅</button>
+        <button type="button" class="app-sidebar-icon" title="Messages">💬</button>
+        <button type="button" class="app-sidebar-icon" title="Factures">🧾</button>
+        <button type="button" class="app-sidebar-icon" title="Profil">👤</button>
+      </aside>
+      <div class="app-main">
+        <div class="app-topbar">
+          <span class="app-topbar-dots"><span></span><span></span><span></span></span>
+          <span class="app-topbar-url">app.chantier-clair · Mon espace artisan</span>
+        </div>
+        <div class="app-stats">
+          <div class="app-stat"><span class="app-stat-label">Revenus ce mois</span><span class="app-stat-value">1 240 €</span></div>
+          <div class="app-stat"><span class="app-stat-label">Chantiers</span><span class="app-stat-value">6</span></div>
+          <div class="app-stat"><span class="app-stat-label">Note moyenne</span><span class="app-stat-value">4.9 ★</span></div>
+        </div>
+        <div class="app-mock-tabs" id="appMockTabs">
+          <button type="button" class="app-mock-tab active" data-panel="devis">🕓 Demandes de devis (2)</button>
+          <button type="button" class="app-mock-tab" data-panel="encours">🔧 En cours</button>
+          <button type="button" class="app-mock-tab" data-panel="termines">✅ Terminés</button>
+        </div>
+
+        <div class="app-mock-card" data-panel="devis">
+          <div class="app-mock-card-top">
+            <span>Camille D.</span>
+            <span class="app-mock-status">En attente</span>
+          </div>
+          <p class="app-mock-desc">Fuite sous l'évier, urgent</p>
+          <div class="app-mock-quote">
+            <div class="app-mock-quote-row"><span>Déplacement</span><span>30,00 €</span></div>
+            <div class="app-mock-quote-row"><span>Réparation</span><span>90,00 €</span></div>
+            <div class="app-mock-quote-total"><span>Total</span><span>120,00 €</span></div>
+          </div>
+          <button type="button" class="app-mock-btn">Envoyer le devis</button>
+        </div>
+
+        <div class="app-mock-card" data-panel="encours" hidden>
+          <div class="app-mock-card-top">
+            <span>Marc L.</span>
+            <span class="app-mock-status app-mock-status-blue">Payé, en séquestre</span>
+          </div>
+          <p class="app-mock-desc">Remplacement tableau électrique</p>
+          <div class="app-mock-photos">
+            <span class="app-mock-photo-chip">📷 Avant ✓</span>
+            <span class="app-mock-photo-chip">📷 Après ✓</span>
+          </div>
+          <p class="app-mock-note">245,00 € en séquestre — libérés après validation du client.</p>
+        </div>
+
+        <div class="app-mock-card" data-panel="termines" hidden>
+          <div class="app-mock-card-top">
+            <span>Julien T.</span>
+            <span class="app-mock-status app-mock-status-green">Payé</span>
+          </div>
+          <p class="app-mock-desc">Installation interphone</p>
+          <p class="app-mock-note">⭐ 5.0 — « Rapide et soigné, je recommande. »</p>
+          <button type="button" class="app-mock-btn app-mock-btn-outline">Voir la facture</button>
+        </div>
       </div>
-      <p class="app-mock-desc">Fuite sous l'évier, urgent</p>
-      <div class="app-mock-quote">
-        <div class="app-mock-quote-row"><span>Déplacement</span><span>30,00 €</span></div>
-        <div class="app-mock-quote-row"><span>Réparation</span><span>90,00 €</span></div>
-        <div class="app-mock-quote-total"><span>Total</span><span>120,00 €</span></div>
-      </div>
-      <button type="button" class="app-mock-btn">Envoyer le devis</button>
     </div>
+    <div class="app-float-chip">🔒 Paiement sécurisé jusqu'à validation</div>
   </div>
 </div>
 
@@ -255,6 +297,42 @@
   attachRipple('.btn-primary, .nav-cta', 'rgba(255,255,255,0.45)');
   attachRipple('.btn-light', 'rgba(20,32,61,0.15)');
   attachRipple('.btn-outline', 'rgba(198,138,46,0.4)');
+
+  var appMockTabs = document.querySelectorAll('#appMockTabs .app-mock-tab');
+  if (appMockTabs.length) {
+    appMockTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        appMockTabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        var panel = tab.getAttribute('data-panel');
+        document.querySelectorAll('.app-mock-card[data-panel]').forEach(function (card) {
+          card.hidden = card.getAttribute('data-panel') !== panel;
+        });
+      });
+    });
+  }
+
+  var appSidebarIcons = document.querySelectorAll('.app-sidebar-icon');
+  appSidebarIcons.forEach(function (icon) {
+    icon.addEventListener('click', function () {
+      appSidebarIcons.forEach(function (i) { i.classList.remove('active'); });
+      icon.classList.add('active');
+    });
+  });
+
+  var appShell = document.getElementById('appShell');
+  var appShellWrap = appShell ? appShell.closest('.app-shell-wrap') : null;
+  if (appShell && appShellWrap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    appShellWrap.addEventListener('mousemove', function (e) {
+      var rect = appShell.getBoundingClientRect();
+      var px = (e.clientX - rect.left) / rect.width - 0.5;
+      var py = (e.clientY - rect.top) / rect.height - 0.5;
+      appShell.style.transform = 'perspective(1100px) rotateY(' + (px * 5) + 'deg) rotateX(' + (-py * 5) + 'deg) translateY(-4px)';
+    });
+    appShellWrap.addEventListener('mouseleave', function () {
+      appShell.style.transform = '';
+    });
+  }
 
   var faqTabs = document.querySelectorAll('.faq-tab');
   if (faqTabs.length) {
