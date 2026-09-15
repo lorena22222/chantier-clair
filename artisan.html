@@ -11,10 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <style>
-  .page-head { padding: 56px 0 8px; text-align: center; }
-  .page-head .mono-label { color: var(--gold-deep); font-size: 13px; font-weight: 600; margin-bottom: 14px; }
-  .page-head h1 { font-size: 34px; max-width: 640px; margin: 0 auto 16px; }
-  .page-head p { font-family: 'Source Serif 4', serif; color: var(--ink-soft); font-size: 16px; max-width: 520px; margin: 0 auto 26px; }
+  .hero { padding: 48px 0 64px; }
+  .hero h1 { font-size: 34px; margin-bottom: 16px; }
 </style>
 </head>
 <body>
@@ -39,11 +37,37 @@
 </div>
 </header>
 
-<div class="wrap page-head">
-  <div class="mono-label">Vous êtes un artisan</div>
-  <h1>Un seul outil pour tout gérer.</h1>
-  <p>Fini les allers-retours entre SMS, carnet de rendez-vous et relances de paiement. Voici comment Chantier Clair simplifie votre quotidien.</p>
-  <a href="https://chantier-clair-app.vercel.app/devenir-artisan" class="btn-primary">Devenir artisan vérifié</a>
+<div class="wrap hero">
+  <div>
+    <div class="mono-label" style="color:var(--gold-deep); font-size:13px; font-weight:600; margin-bottom:14px;">Vous êtes un artisan</div>
+    <h1>Un seul outil pour tout gérer.</h1>
+    <p class="lede" style="max-width:440px;">Fini les allers-retours entre SMS, carnet de rendez-vous et relances de paiement. Voici comment Chantier Clair simplifie votre quotidien.</p>
+    <a href="https://chantier-clair-app.vercel.app/devenir-artisan" class="btn-primary">Devenir artisan vérifié</a>
+  </div>
+  <div class="ticket">
+    <div class="ticket-head">
+      <span class="t-label"><span class="t-live"></span>Mon espace artisan</span>
+      <span class="t-id">app.chantier-clair</span>
+    </div>
+    <div class="app-mock-tabs">
+      <span class="app-mock-tab active">🕓 Demandes de devis (2)</span>
+      <span class="app-mock-tab">🔧 En cours</span>
+      <span class="app-mock-tab">✅ Terminés</span>
+    </div>
+    <div class="app-mock-card">
+      <div class="app-mock-card-top">
+        <span>Camille D.</span>
+        <span class="app-mock-status">En attente</span>
+      </div>
+      <p class="app-mock-desc">Fuite sous l'évier, urgent</p>
+      <div class="app-mock-quote">
+        <div class="app-mock-quote-row"><span>Déplacement</span><span>30,00 €</span></div>
+        <div class="app-mock-quote-row"><span>Réparation</span><span>90,00 €</span></div>
+        <div class="app-mock-quote-total"><span>Total</span><span>120,00 €</span></div>
+      </div>
+      <button type="button" class="app-mock-btn">Envoyer le devis</button>
+    </div>
+  </div>
 </div>
 
 <section class="become-pro reveal">
@@ -75,10 +99,13 @@
 <section class="reveal" style="padding:16px 0 72px;text-align:center;">
   <div class="wrap">
     <div class="become-pro-perks" style="justify-content:center;">
-      <span class="chip">🎉 Aucun frais d'inscription</span>
+      <span class="chip"><strong>🎉 Aucun frais d'inscription, aucun abonnement</strong></span>
       <span class="chip">💸 10% de commission, uniquement sur les chantiers réalisés</span>
-      <span class="chip">🤝 Parrainez un artisan, gagnez 15€</span>
+      <a href="https://chantier-clair-app.vercel.app/artisan?tab=profil" class="chip">🤝 Parrainez un artisan, gagnez 15€</a>
     </div>
+    <p style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:var(--ink-soft); margin-top:14px; max-width:480px; margin-left:auto; margin-right:auto;">
+      Sur un devis de 100 €, vous recevez 90 € — calculé automatiquement dans l'interface au moment du devis, avant même de l'envoyer. Aucun engagement : la commission n'est prélevée que si le chantier est réellement réalisé et payé, jamais avant. Si vous n'êtes pas payé, nous non plus — gagnant-gagnant.
+    </p>
     <div class="become-pro-social" style="justify-content:center;margin-top:24px;">
       <div class="trust-avatars">
         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" loading="lazy">
@@ -103,7 +130,7 @@
       <div class="timeline-node">
         <div class="timeline-node-circle">🔎</div>
         <h3>Vos preuves comptent</h3>
-        <p>Photos avant/après, messages échangés : on tranche sur ces faits, pas sur la seule parole du client.</p>
+        <p>Photos avant/après, messages échangés : notre équipe étudie chaque dossier avant de trancher, pas seulement la parole du client.</p>
       </div>
       <div class="timeline-node">
         <div class="timeline-node-circle">⚖️</div>
