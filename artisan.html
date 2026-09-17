@@ -48,16 +48,23 @@
     <div class="app-shell" id="appShell">
       <aside class="app-sidebar">
         <span class="app-sidebar-logo">✓</span>
-        <button type="button" class="app-sidebar-icon active" title="Chantiers">📋</button>
-        <button type="button" class="app-sidebar-icon" title="Agenda">📅</button>
-        <button type="button" class="app-sidebar-icon" title="Messages">💬</button>
+        <button type="button" class="app-sidebar-bell" title="Notifications">
+          🔔
+          <span class="app-sidebar-bell-badge">3</span>
+        </button>
+        <div class="app-sidebar-divider"></div>
+        <button type="button" class="app-sidebar-icon active" title="Chantiers">🏗️</button>
+        <button type="button" class="app-sidebar-icon" title="Agenda">🗓️</button>
+        <button type="button" class="app-sidebar-icon" title="Revenus">📈</button>
         <button type="button" class="app-sidebar-icon" title="Factures">🧾</button>
+        <button type="button" class="app-sidebar-icon" title="Avis">⭐</button>
+        <button type="button" class="app-sidebar-icon" title="Litiges">⚖️</button>
         <button type="button" class="app-sidebar-icon" title="Profil">👤</button>
       </aside>
       <div class="app-main">
         <div class="app-topbar">
           <span class="app-topbar-dots"><span></span><span></span><span></span></span>
-          <span class="app-topbar-url"><span class="t-live"></span>app.chantier-clair · Mon espace artisan</span>
+          <span class="app-topbar-url">app.chantier-clair · Mon espace artisan</span>
         </div>
         <div class="app-stats">
           <div class="app-stat"><span class="app-stat-label">Revenus ce mois</span><span class="app-stat-value">1 240 €</span></div>
@@ -65,7 +72,7 @@
           <div class="app-stat"><span class="app-stat-label">Note moyenne</span><span class="app-stat-value">4.9 ★</span></div>
         </div>
         <div class="app-mock-tabs" id="appMockTabs">
-          <button type="button" class="app-mock-tab active" data-panel="devis">🕓 Demandes de devis (2)</button>
+          <button type="button" class="app-mock-tab active" data-panel="devis">🕓 Devis à faire<span class="app-mock-tab-badge">2</span></button>
           <button type="button" class="app-mock-tab" data-panel="encours">🔧 En cours</button>
           <button type="button" class="app-mock-tab" data-panel="termines">✅ Terminés</button>
         </div>
