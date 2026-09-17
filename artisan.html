@@ -72,7 +72,10 @@
 
         <div class="app-mock-card" data-panel="devis">
           <div class="app-mock-card-top">
-            <span>Camille D.</span>
+            <div class="app-mock-client">
+              <img class="app-mock-avatar" src="https://randomuser.me/api/portraits/women/65.jpg" alt="" loading="lazy">
+              <span>Camille D.</span>
+            </div>
             <span class="app-mock-status">En attente</span>
           </div>
           <p class="app-mock-desc">Fuite sous l'évier, urgent</p>
@@ -86,20 +89,32 @@
 
         <div class="app-mock-card" data-panel="encours" hidden>
           <div class="app-mock-card-top">
-            <span>Marc L.</span>
+            <div class="app-mock-client">
+              <img class="app-mock-avatar" src="https://randomuser.me/api/portraits/men/45.jpg" alt="" loading="lazy">
+              <span>Marc L.</span>
+            </div>
             <span class="app-mock-status app-mock-status-blue">Payé, en séquestre</span>
           </div>
           <p class="app-mock-desc">Remplacement tableau électrique</p>
           <div class="app-mock-photos">
-            <span class="app-mock-photo-chip">📷 Avant ✓</span>
-            <span class="app-mock-photo-chip">📷 Après ✓</span>
+            <div class="app-mock-photo-item">
+              <img class="app-mock-photo-thumb" src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Russian_stove_plug_and_socket.jpg" alt="Avant intervention" loading="lazy">
+              <span class="app-mock-photo-label">✓ Avant</span>
+            </div>
+            <div class="app-mock-photo-item">
+              <img class="app-mock-photo-thumb" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Electrical-Outlet-8830c.jpg" alt="Après intervention" loading="lazy">
+              <span class="app-mock-photo-label">✓ Après</span>
+            </div>
           </div>
           <p class="app-mock-note">245,00 € en séquestre — libérés après validation du client.</p>
         </div>
 
         <div class="app-mock-card" data-panel="termines" hidden>
           <div class="app-mock-card-top">
-            <span>Julien T.</span>
+            <div class="app-mock-client">
+              <img class="app-mock-avatar" src="https://randomuser.me/api/portraits/women/12.jpg" alt="" loading="lazy">
+              <span>Léa R.</span>
+            </div>
             <span class="app-mock-status app-mock-status-green">Payé</span>
           </div>
           <p class="app-mock-desc">Installation interphone</p>
